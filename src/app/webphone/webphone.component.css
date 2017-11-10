@@ -1,0 +1,107 @@
+@font-face {
+    font-family: cylb;
+    src: url('/assets/fonts/c&lb.ttf');
+}
+@font-face {
+    font-family: cyl;
+    src: url('/assets/fonts/c&l.ttf');
+}
+.webphone.status {
+    width: 100%;
+    background: rgb(158,158,158);
+    border-radius: 10px;
+    height: 150px !important;
+    min-height: 150px !important;
+    max-height: 150px !important;
+    text-align: center;
+}
+
+.webphone.dialer {
+    width: 100%;
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+}
+
+.statusText {
+    font-family: cyl;
+    font-size: 30px;
+    color: #FFF;
+}
+
+.dialer.mdl-textfield.mdl-textfield__label {
+    color: #FFF;
+}
+
+.pad {
+    min-height: 240px !important;
+    min-width: 192px !important;
+    max-width: 192px !important;
+    height: auto;
+}
+
+.padcontainer {
+    min-height: 300px !important;
+    min-width: 192px !important;
+    height: auto;
+}
+
+.pad-button {
+    width: 100%;
+    height: 24px;
+    font-size: 16px;
+    text-transform: none;
+}
+
+.row {
+    height: 60px;
+}
+
+.dialer.contenedor {
+    display: flex;
+    flex-flow: row;
+    padding: 0px;
+    min-height: 400px;
+}
+
+.contenedor.mdl-card {
+    display: flex;
+    flex-flow: row;
+    padding: 0px;
+    min-height: 400px;
+}
+
+.tabla.mdl-card {
+    min-height: 400px;
+}
+
+.dialer.dialcol {
+    width: 60px;
+    height: 60px;
+}
+
+.dialer.mdl-button {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgb(158,158,158);
+}
+
+.dialer.number {
+    font-family: cylb;
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dialer.caption {
+    font-family: cylb;
+    font-size: 10px;
+}
+
+.slider-container {
+    transform: rotateZ(-90deg);
+}
+
+.centrado {
+    margin: 0 auto;
+}

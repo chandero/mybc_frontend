@@ -1,0 +1,99 @@
+<mdl-card class="card">
+    <mdl-card class="card-left">
+        <table>
+            <colgroup>
+                <col class="item-icon">
+                <col class="item-callerid">
+                <col class="item-icon">
+                <col class="item-callerdate">
+                <col class="item-icon">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <div class="header-name">
+                            <div>
+                                <mdl-textfield type="text" icon="search"></mdl-textfield>
+                            </div>
+                            <div style="display:block; margin: auto;">
+                                <img src="/mybc/assets/images/contactheader.svg">
+                                <!-- <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;">add</mdl-icon></button> -->
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="item-disposicion">
+                            <img src="/mybc/assets/images/phone1.svg">
+                        </div>
+                    </th>
+                    <th colspan="2" class="header-callerdate">
+                        <div>
+                            <div>
+                                <button
+                                    mdl-button
+                                    (click)="pickADate($event)"
+                                    mdl-button-type="icon"
+                                    mdl-ripple>
+                                    <mdl-icon>event</mdl-icon>
+                                </button>
+                            <span>{{ _iniDate | date: 'MM/dd/yyyy' }}</span>
+                            </div>
+                            <input class="form-control" id="_iniDate" name="_iniDate" [ngModel]="_iniDate | date: 'MM/dd/yyyy'" (ngModelChange)="onChangeIniDate($event)"  label="Desde" type="text" >
+                            <input class="form-control" id="_endDate" name="_endDate" [ngModel]="_endDate | date: 'MM/dd/yyyy'" (ngModelChange)="onChangeEndDate($event)" label="Hasta" type="text" useValueAsDate>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <div class="line">
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="_cdrs?.length < 1" ><td colspan=5>{{  _no_records }}</td></tr>
+                <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
+                    <td class="item-icon">
+                        <img src="/mybc/assets/images/contactheader.svg">
+                    </td>
+                    <td class="item-callerid">
+                        <div *ngIf="cdr.src != _extension">{{ cdr.src }}</div>
+                        <div *ngIf="cdr.src == _extension">{{ cdr.dst }}</div>
+                    </td>
+                    <td class="item-icon">
+                        <img *ngIf="cdr.disposition == 'NO ANSWER'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
+                        <img *ngIf="cdr.disposition == 'FAILED'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
+                        <img *ngIf="cdr.disposition == 'ANSWERED' && cdr.src == _extension"  src="/mybc/assets/images/outcall.png" class="gridimg">
+                    </td>
+                    <td class="item-callerdate">{{ cdr.calldate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                    <td class="item-icon">
+                      <div *ngIf="cdr.incall">
+                        <button mdl-button  mdl-button-type="icon" (click)="hangup()">
+                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
+                            </button>
+                     </div>
+                      <div *ngIf="_notInCall && !_ringing">
+                        <div *ngIf="cdr.src != _extension">
+                        <button mdl-button  mdl-button-type="icon" (click)="dial(cdr.src, i)">
+                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                            </button>
+                        </div>
+                        <div *ngIf="cdr.src == _extension">
+                        <button mdl-button  mdl-button-type="icon" (click)="dial(cdr.dst, i)">
+                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                            </button>
+                        </div>   
+                     </div>                                            
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </mdl-card>
+</mdl-card>
+<dialog-outlet></dialog-outlet>

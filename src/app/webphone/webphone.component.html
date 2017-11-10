@@ -1,0 +1,186 @@
+<div class="status mdl-grid">
+
+    <div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+    </div>
+
+    <div class="mdl-cell mdl-cell--4-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+        <mdl-card class="webphone status">
+            <div class="statusText">{{ _statusText }}</div>
+            <div>
+                <mdl-textfield #numberToDial *ngIf="_ready" readonly [(ngModel)]="_dialnumber" name="dialernumber" (change)="dialerChange($event); false"
+                    (keyup)="dialerChange($event); false" (keyup.enter)="dial(); false" class="mdl-texfield" autofocus="true" label="Número"
+                    type="text" floating-label pattern="-?[\+0-9*#]*([\+0-9*#]+)?" error-msg="La entrada no es un número a marcar válido!"></mdl-textfield>
+                <mdl-icon *ngIf="_ready" style="font-size:24px;color:rgb(255,255,255);cursor:pointer;" (click)="clear()">backspace</mdl-icon>
+            </div>
+            <div *ngIf="_incall">{{ _identifier }}</div>
+            <div *ngIf="_inprogress">{{ _identifier }}</div>
+            <div *ngIf="_incall">{{ _dialnumber }}</div>
+            <div *ngIf="_inprogress">{{ _dialnumber }}</div>
+            <div>
+                <app-clock [enabled]="_startclock"></app-clock>
+            </div>
+        </mdl-card>
+    </div>
+    <div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">
+    </div>
+</div>
+
+<div class="dialer mdl-grid">
+
+    <div class="dialer mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--4-col-desktop">
+    </div>
+
+    <div class="dialer mdl-cell mdl-cell--4-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+        <table class="padcontainer">
+            <tr>
+                <td class="pad">
+                    <table>
+                        <colgroup>
+                            <col class="dialer dialcol">
+                            <col class="dialer dialcol">
+                            <col class="dialer dialcol">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td><button (click)="numberClick(1)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">1</div><div class="dialer caption">&nbsp;</div></button></td>
+                                <td><button (click)="numberClick(2)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">2</div><div class="dialer caption">ABC</div></button></td>
+                                <td><button (click)="numberClick(3)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">3</div><div class="dialer caption">DEF</div></button></td>
+                            </tr>
+                            <tr>
+                                <td><button (click)="numberClick(4)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">4</div><div class="dialer caption">GHI</div></button></td>
+                                <td><button (click)="numberClick(5)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">5</div><div class="dialer caption">JKL</div></button></td>
+                                <td><button (click)="numberClick(6)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">6</div><div class="dialer caption">MNO</div></button></td>
+                            </tr>
+                            <tr>
+                                <td><button (click)="numberClick(7)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">7</div><div class="dialer caption">PQRS</div></button></td>
+                                <td><button (click)="numberClick(8)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">8</div><div class="dialer caption">TUV</div></button></td>
+                                <td><button (click)="numberClick(9)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">9</div><div class="dialer caption">WXYZ</div></button></td>
+                            </tr>
+                            <tr>
+                                <td><button (click)="numberClick('*')" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">*</div></button></td>
+                                <!-- <td><button click)="numberClick(0)" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">0</div></button></td> -->
+                                <td><button (mousedown)="zeroHold()" (mouseup)="zeroCancel()"  class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">0</div><div class="dialer caption">+</div></button></td>
+                                <td><button (click)="numberClick('#')" class="dialer mdl-button mdl-js-button mdl-js-ripple-effect"><div class="dialer number">#</div></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button *ngIf="_idle" (click)="dial()" class="pad-button mdl-button">
+                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call</mdl-icon>
+<span>Llamar</span>
+</button>
+                    <button *ngIf="_ringing" (click)="answer()" class="pad-button mdl-button">
+                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call</mdl-icon>
+<span>Aceptar</span>
+</button>
+                    <button *ngIf="_ringing" (click)="reject()" class="pad-button mdl-button">
+                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call_end</mdl-icon>
+<span>Rechazar</span>
+</button>
+                    <button *ngIf="_incall" (click)="hangup()" class="pad-button mdl-button">
+                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
+<span>Finalizar</span>
+</button>
+                    <button *ngIf="_inprogress" (click)="hangup()" class="pad-button mdl-button">
+                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
+<span>Finalizar</span>
+</button>
+                </td>
+                <td class="centrado">
+                    <div>
+                        <!-- <button class="mdl-button mdl-js-button mdl-button--icon">
+                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">add</mdl-icon>
+</button> -->
+                    </div>
+                    <div class="slider-container">
+                        <!-- <input id="slider" class="mdl-slider mdl-js-slider" type="range" min="0" max="10" value="0"> -->
+                    </div>
+                    <div>
+                        <!-- <button class="mdl-button mdl-js-button mdl-button--icon">
+                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">remove</mdl-icon>
+</button> -->
+                    </div>
+                    <div>
+                        <!-- <img src="/mybc/assets/images/speaker.svg">--></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <table *ngIf="_incall">
+                        <tr>
+                            <td>
+                                <mdl-icon-toggle [(ngModel)]="_isMuted" (change)="togglemute()" title="Silencio">mic_off</mdl-icon-toggle>
+                            </td>
+                            <!--
+                <td>
+                    <mdl-icon-toggle  [(ngModel)]="_isHold" (change)="togglehold()">pause</mdl-icon-toggle>
+                </td>
+                <td>
+                    <button mdl-button mdl-button-type="icon">
+                                    <mdl-icon>call</mdl-icon>
+                                </button>
+                </td>
+                -->
+                            <td>
+                                <button mdl-button mdl-button-type="icon" (click)="_transferDialog.show()" #transferButton title="Transferir">
+                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone_forwarded</mdl-icon>
+                                </button>
+                            </td>
+                            <!--
+<td>
+    <mdl-icon-toggle [(ngModel)]="_isVideo" (change)="togglevideo()">videocam</mdl-icon-toggle>
+</td>
+-->
+                        </tr>
+                    </table>
+                </td>
+        </table>
+        <dialog-outlet></dialog-outlet>
+        <mdl-dialog #_transferDialog [mdl-dialog-config]="{
+              clickOutsideToClose: true,
+              styles:{'width': '300px'},
+              isModal:true,
+              openFrom: transferButton,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+            <h3 class="mdl-dialog__title">Transferir a:</h3>
+            <div class="mdl-dialog__content">
+                <mdl-textfield type="text" label="Número" [(ngModel)]="_dialnumber" floating-label autofocus></mdl-textfield>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button mdl-button (click)="_transferDialog.close(); transfer();" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Transferir</button>
+                <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cancelar</button>
+            </div>
+        </mdl-dialog>
+        <mdl-dialog #_localVideo [mdl-dialog-config]="{
+              clickOutsideToClose: true,
+              styles:{'width': '300px'},
+              isModal:true,
+              openFrom: transferButton,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+            <div class="mdl-dialog__content">
+                <video class="local-video"></video>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cerrar</button>
+            </div>
+        </mdl-dialog>
+        <mdl-dialog #_remoteVideo [mdl-dialog-config]="{
+              clickOutsideToClose: true,
+              styles:{'width': '300px'},
+              isModal:false,
+              openFrom: transferButton,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+            <div class="mdl-dialog__content">
+                <video id="remoteVideo" class="remote-video"></video>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button mdl-button (click)="_remoteVideo.close()" mdl-ripple>Cerrar</button>
+            </div>
+        </mdl-dialog>
+    </div>
+
+    <div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--4-col-desktop">
+    </div>
+</div>

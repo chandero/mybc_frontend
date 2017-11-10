@@ -1,0 +1,16 @@
+.card {
+    width: 100%;
+    height: 64px !important;
+    min-height: 64px !important;
+    max-height: 64px !important;
+}
+
+.content-grid-buttons {
+  width: 100%;
+  height: 24px;  
+}
+
+.content-grid-video {
+  height: 720px;
+  width: 100%;
+}

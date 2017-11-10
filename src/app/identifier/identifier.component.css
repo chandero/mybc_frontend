@@ -1,0 +1,65 @@
+@font-face {
+    font-family: cylb;
+    src: url('/mybc/assets/fonts/c&lb.ttf');
+}
+
+.mybc-font {
+    font-family: cylb;
+    font-size: 20px;
+    color: white;
+}
+
+.mybc-center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.mybc-background {
+    /* background-color: #000000; */
+    opacity: 0.6;
+}
+
+.mybc-login-width {
+    max-width:300px;
+    min-width: 270px;
+}
+
+.mybc-login-container {
+    min-height: 180px;
+    padding-top: 10px;
+}
+
+.mybc-login-input{
+    width: 100%;
+    max-width: 180px;
+    height: 25px;
+    margin: 0 auto;
+    color: #000000;
+    font-size: 14px;
+}
+
+.mybc-login-button {
+    font-size: 18px;
+    width: 80px;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(176,203,31);
+}
+
+.mybc-login-forgot {
+    font-family: cylb;
+    font-size: 14px;
+    color: white;
+    text-decoration: underline;
+}
+
+.mybc-lang-container {
+    text-align: center;
+    padding-top: 5px; 
+}
+
+#mybc-lang-select {
+    max-width: 70%;
+    margin: 0 auto;
+}

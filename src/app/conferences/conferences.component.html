@@ -1,0 +1,146 @@
+<mdl-card class="card">
+  <mdl-card class="card-left">
+    <mdl-card class="card-grid">
+      <span>Próximas conferencias</span>
+      <table mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp>
+        <colgroup>
+          <col class="item-icon">
+          <col class="item-conferencename">
+          <col class="item-conferencedate">
+          <col class="item-conferenceparticipants">
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div>
+                <div class="mdl-textfield__expandable-holder">
+                  <mdl-textfield type="text" icon="search"></mdl-textfield>
+                </div>
+                <div style="display:block; margin: auto;">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"><span>nueva</span></button>
+                  <img src="/mybc/assets/images/conferencelist.svg">
+                </div>
+              </div>
+            </th>
+            <th>
+              <div class="header-phone">
+                <img src="/mybc/assets/images/calendar2.svg">
+              </div>
+            </th>
+            <th class="header-actions">
+              <div>
+                <span></span>
+              </div>
+            </th>
+            <th>
+              <div class="header-phone">
+                <img src="/mybc/assets/images/conferencepersons.svg">
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5">
+              <div class="line">
+              </div>
+            </td>
+          </tr>
+          <tr *ngFor="let conference of _conferences" class="item">
+            <td class="item-icon">
+              <img src="/mybc/assets/images/headerconference.svg">
+            </td>
+            <td class="item-conferencename">{{ conference.confDescription }}</td>
+            <td class="item-conferencedate">{{ conference.confDate }}</td>
+            <td class="item-conferenceparticipants">
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <span>Conferencias Pasadas</span>
+      <table mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp>
+        <colgroup>
+          <col class="item-icon">
+          <col class="item-conferencename">
+          <col class="item-conferencedate">
+          <col class="item-conferenceparticipants">
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div>
+                <div class="mdl-textfield__expandable-holder">
+                  <mdl-textfield type="text" icon="search"></mdl-textfield>
+                </div>
+                <div style="display:block; margin: auto;">
+                  <img src="/mybc/assets/images/headerconference.svg">
+                </div>
+              </div>
+            </th>
+            <th>
+              <div class="header-phone">
+                <img src="/mybc/assets/images/calendar2.svg">
+              </div>
+            </th>
+            <th class="header-actions">
+              <div>
+                <span></span>
+              </div>
+            </th>
+            <th>
+              <div class="header-phone">
+                <img src="/mybc/assets/images/play.svg">
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5">
+              <div class="line">
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="_conferences?.length < 1" ><td colspan=5>{{  _no_records }}</td></tr>
+          <tr *ngFor="let conference of _conferences" class="item">
+            <td class="item-icon">
+              <img src="/mybc/assets/images/headerconference.svg">
+            </td>
+            <td class="item-conferencename">{{ conference.confDescription }}</td>
+            <td class="item-conferencedate">{{ conference.confDate }}</td>
+            <td class="item-conferenceparticipants"><audio controls></audio>
+            </td>
+            <td><button mdl-button mdl-button-type="icon"><mdl-icon>file_download</mdl-icon></button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <!--  paginacion -->
+            </td>
+          </tr>
+        </tfoot>
+      </table>      
+  </mdl-card>
+  <mdl-card class="card-conferences">
+    <div>
+      <img src="/mybc/assets/images/conferencelist.svg" class="card-conference-img">
+    </div>
+    <div>
+      <span>Número de sala virtual</span>
+      <button class="mdl-button mdl-primary">+ programar una conferencia</button>
+      <button class="mdl-button">Reunión instantanea</button>
+    </div>
+  </mdl-card>
+  </mdl-card>
+  <mdl-card class="card-right">
+    <button mdl-button mdl-button-type="icon"><mdl-icon>settings</mdl-icon></button>
+  </mdl-card>
+</mdl-card>

@@ -1,0 +1,44 @@
+@font-face {
+    font-family: cylb;
+    src: url('/mybc/assets/fonts/c&lb.ttf');
+}
+
+.line {
+    display: block;
+    height: 5px;
+    background: rgb(158,158,158);
+}
+
+.contact.mdl-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    padding: 0px;
+    font-family: cylb;
+}
+
+.contact.image-header {
+    width: 48px;
+    height: 48px;
+}
+
+.contact.image-phone {
+    width: 24px;
+    height: 24px;
+}
+
+.contact.image-address {
+    width: 24px;
+    height: 24px;   
+}
+
+.contact.image-email {
+    width: 24px;
+    height: 24px;   
+}
+
+.contact.form {
+    width: 80%;
+    height: auto;
+}

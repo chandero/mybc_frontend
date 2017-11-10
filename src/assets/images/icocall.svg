@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="3.9551mm" height="4.0822mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 40 41"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#BBC274}
+    .fil1 {fill:#BBC274;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2258848041808">
+   <path class="fil0" d="M1 11c0,-1 0,-2 1,-2 1,-1 3,-4 5,-4 1,0 1,1 2,1 1,1 3,4 3,6 0,2 -3,3 -3,5 0,1 1,2 1,3 1,1 1,1 2,2 1,2 2,2 3,3 0,1 0,1 0,1l3 2c1,1 4,4 6,4 1,0 2,-1 3,-2 1,-1 1,-1 2,-1 2,0 4,1 4,2 2,1 3,2 3,3 0,2 -2,4 -4,5 -2,2 -7,0 -9,-1l-2 -1c-2,-1 -5,-3 -6,-4l-3 -3c-1,-1 -1,-1 -1,-1 0,0 0,0 0,0l-3 -3c-1,-2 -2,-2 -3,-4 -2,-3 -4,-7 -4,-11zm5 -7l1 0c1,0 2,0 3,1 1,1 2,3 3,4 1,1 1,3 1,4 -1,1 -1,2 -2,2 0,1 -1,2 -1,2 0,1 1,3 2,4l5 5c0,1 0,1 0,1 1,1 5,3 6,3 1,0 3,-4 8,-2 2,1 5,4 5,6 0,2 0,2 -1,4l-1 1c-2,2 -3,2 -6,2l0 0c-2,0 -6,-1 -8,-3l-2 -1c-5,-3 -10,-8 -13,-12 -2,-3 -3,-5 -4,-7l-1 -3c-1,-2 -1,-2 -1,-4l0 0c0,-1 0,-2 1,-3 0,0 2,-2 3,-3l1 0c0,-1 1,-1 1,-1z"/>
+   <circle class="fil0" cx="21" cy="19" r="2"/>
+   <circle class="fil0" cx="27" cy="14" r="2"/>
+   <circle class="fil0" cx="32" cy="9" r="2"/>
+   <polygon class="fil1" points="33,5 31,4 40,0 37,9 36,8 38,2 "/>
+  </g>
+ </g>
+</svg>

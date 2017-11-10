@@ -1,0 +1,247 @@
+@font-face {
+    font-family: cylb;
+    src: url('/assets/fonts/c&lb.ttf');
+}
+
+body {
+    font-family: cylb !important;
+}
+
+@media screen and (max-width: 1024px){
+    .mdl-layout__header {
+        padding-left: 0px !important;
+    }
+
+    .mdl-layout__content {
+        margin-left: 0px;
+        font-family: cylb !important;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .mdl-layout__header {
+        padding-left: 240px !important;
+    }
+    .mdl-layout__content {
+        margin-left: 240px;
+        font-family: cylb !important;
+    }
+}
+
+.status-user-img {
+    width: 32px;
+    height: 32px;
+}
+
+.status-user-font {
+    font-family: cylb;
+    font-size: 14px;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.status-phone-img {
+    width: 32px;
+    height: 32px;
+}
+
+.status-phone-font {
+    font-family: cylb;
+    font-size: 14px;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.status-time-font {
+    text-align: center;
+    font-family: cylb;
+    font-size: 14px;
+    color: #fff;
+}
+
+.mybc-layout .mybc-header .mdl-textfield {
+  padding: 0px;
+  margin-top: 41px;
+}
+
+.mybc-header {
+    background-color: #000;
+}
+
+.mybc-drawer {
+  border: none;
+}
+
+.mdl-layout {
+    height: 100vh;
+}
+
+
+
+.mdl-layout-title {
+/*    width: 96px; */
+    padding-left: 0px !important;
+    margin: 0 auto !important;
+}
+
+.mdl-layout__drawer {
+    font-family: cylb;
+/*    width: 96px; */
+    height: 100%;
+    background: #000;
+}
+
+.mdl-navigation__link {
+    height: 40px;
+/*    padding: 16px 0px !important;
+    margin: 0 auto !important; */
+}
+
+.mdl-navigation__link:hover {
+    text-decoration: none;
+    color: #000 !important;
+    background-color: rgb(176,206,31) !important;
+}
+
+.menu-line {
+    display: block;
+    height: 8px;
+    background: rgb(176,206,31);
+}
+
+.menu-logo {
+    width: 76.65px;
+    height: 47.25px;
+}
+
+.menu-image {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-image-webphone {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-webphone {
+    font-size: 14px;
+}
+
+.menu-image-llamadas {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-llamadas {
+    font-size: 16px;
+}
+
+.menu-image-contactos {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-contactos {
+    font-size: 16px;
+}
+
+.menu-image-conferencia {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-conferencia {
+    font-size: 16px;
+}
+
+.menu-image-voicemail {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-voicemail {
+    font-size: 16px;
+}
+
+.menu-image-followme {
+    width: 62px;
+    height: 32px;
+}
+
+.menu-title-followme {
+    font-size: 16px;
+}
+
+.menu-image-setup {
+    width: 32px;
+    height: 32px;
+}
+
+.menu-title-setup {
+    font-size: 14px;
+}
+
+.status-user-img {
+  width: 32px;
+  height: 32px;
+}
+
+.status-phone-img {
+  width: 32px;
+  height: 32px;
+}
+
+.exit-img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 96px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 0px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #000;
+    background: rgb(176,206,31);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 70px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}

@@ -1,0 +1,452 @@
+<Head>
+    <Title> Navaismo's ElastixCC-WebRTC </ title>
+        <! - SIPMl5 APIs for  WebRTC calls ->
+        <Script src="js/SIPml-api.js">
+            </ script>
+                < Link href = "css / bootstrap.min.css"  media = "screen"  rel = "stylesheet" > </ link>
+                    < / Head>
+
+                    < Script >
+
+
+ // Variables
+ var  mySipStack;
+            var mycallSession;
+            var myregisterSession;
+
+            // Readycallback for INIT
+            var readyCallback = function (e) {
+                console.log("engine is ready");
+
+                // Check if the start SIPml
+                if (SIPml.isInitialized() == 1) {
+                    console.log("Done to initialize the engine");
+                    // If the stack is started, create the sip stack
+                    startSipStack();
+                } else {
+                    If not started // display console msg
+                    console.log("Failed to initialize the engine");
+                }
+            }
+
+            // Error callback for INIT
+            var errorCallback = function (e) {
+                console.error('Failed to initialize the engine:' + e.Message);
+            }
+
+            // INIT SIPML5 API
+            SIPml.init(readyCallback, errorCallback);
+
+            // Here we listen messages stack
+            function listenerFunc(e) {
+                // Log incoming messages
+                tsk_utils_log_info('== stack event =' + e.type);
+
+                switch (e.type) {
+
+                    // If failed msg mistake or Log in console & Web Page
+                    case 'failed_to_start': case 'failed_to_stop': case 'stopping': case 'stopped': {
+
+                        console.log("Failed to connect to SIP SERVER")
+                        mycallSession = null;
+                        mySipStack = null;
+                        myregisterSession = null;
+
+                        $("#mysipstatus").html('');
+                        $("#mysipstatus").html('<i> Disconnected: </ i>' + e.description);
+
+                        break;
+                    }
+
+                    // If the msg is 'started' now try to Login to Sip server           
+                    case 'started': {
+                        console.log("Trying to Login");
+
+                        login(); // function to login in sip server
+
+                        // Display msg in the web page
+                        $("#mysipstatus").html('');
+                        $("#mysipstatus").html('<i> Trying to Connect </ i>');
+
+                        break;
+                    }
+
+                    // If the msg 'connected' OK display the register in the web page 
+                    case 'connected': {
+                        $("#mysipstatus").html('');
+                        $("#mysipstatus").html('<i> registered with Sip Server </ i>');
+
+                        break;
+                    }
+
+                    // If the msg 'Sent request' That display in the web page --- Pattience
+                    case 'sent_request': {
+
+                        $("#mysipstatus").html('');
+                        $("#mysipstatus").html('<i>' + e.description + '</ i>');
+
+                        break;
+                    }
+
+                    // If the msg 'terminated' display on the web --- That maybe error?
+                    case 'terminated': {
+                        $("#mysipstatus").html('');
+                        $("#mysipstatus").html('<i>' + e.description + '</ i>');
+
+                        break;
+                    }
+
+                    // If the msg 'i_new_call' the browser has an incoming call
+                    case 'i_new_call': {
+                        if (mycallSession) {
+                            // Do not accept the incoming call if we're Already 'in call'
+                            e.newSession.hangup(); // Comment this line for multi-line support
+                        } else {
+
+                            mycallSession = e.newSession;
+
+                            // Change buttons values
+                            btnCall.value = 'Answer';
+                            btnHangUp.value = 'Reject';
+                            btnCall.disabled = false;
+                            btnHangUp.disabled = false;
+
+                            // Start ringing in the browser
+                            startRingTone();
+
+                            // Display web page in the WHO is calling
+                            var sRemoteNumber = (mycallSession.getRemoteFriendlyName() || 'unknown');
+                            $("#mycallstatus").html("<i> Incoming call from [<b>" + sRemoteNumber + "</ b>] </ i>");
+                            showNotifICall(sRemoteNumber);
+                        }
+                        break;
+                    }
+
+                    case 'm_permission_requested': {
+                        break;
+                    }
+                    case 'm_permission_accepted':
+                    case 'm_permission_refused': {
+                        if (e.type == 'm_permission_refused') {
+
+                            btnCall.value = 'Call';
+                            btnHangUp.value = 'HangUp';
+                            btnCall.disabled = false;
+                            btnHangUp.disabled = true;
+
+                            mycallSession = null;
+
+                            stopRingbackTone();
+                            stopRingTone();
+
+                            $("#mysipstatus").html("<i>" + s_description + "</ i>");
+
+                        }
+                        break;
+                    }
+                    case 'starting': default: break;
+                }
+            }
+
+            // Function to Listen the call session events
+            function calllistener(e) {
+                // Log all events
+                tsk_utils_log_info('call event **** **** =' + e.type);
+
+                switch (e.type) {
+
+                    // Display in the web page That is connecting the call
+                    case 'connected': case 'connecting': {
+
+                        var bconnected = (e.type == 'connected');
+                        if (== e.session myregisterSession) {
+                            $("#mycallstatus").html("<i>" + e.description + "</ i>");
+
+                        } else  if (e.type == 'connecting') {
+                            $("#mycallstatus").html("<i>" + e.description + "</ i>");
+
+                        } else if (== e.session mycallSession) {
+                            btnHangUp.value = 'HangUp';
+
+                            if (bconnected) {
+                                stopRingbackTone();
+                                stopRingTone();
+                            }
+                        }
+                        break;
+                    }
+
+                    // In the browser Display teh call is finished
+                    case 'terminated': case 'terminating': {
+
+                        this._
+                        break;
+
+                    }
+
+                    // Future use with video
+                    case 'm_stream_video_local_added': {
+                        if (== e.session mycallSession) {
+
+                        }
+                        break;
+                    }
+
+                    // Future use with video
+                    case 'm_stream_video_local_removed': {
+                        if (== e.session mycallSession) {
+
+                        }
+                        break;
+                    }
+
+                    // Future use with video
+                    case 'm_stream_video_remote_added': {
+                        if (== e.session mycallSession) {
+
+                        }
+                        break;
+                    }
+
+                    // Future use with video
+                    case 'm_stream_video_remote_removed': {
+                        if (== e.session mycallSession) {
+
+                        }
+                        break;
+                    }
+
+                    // Added all messaging media audio
+                    case 'm_stream_audio_local_added':
+                    case 'm_stream_audio_local_removed':
+                    case 'm_stream_audio_remote_added':
+                    case 'm_stream_audio_remote_removed': {
+
+                        stopRingTone();
+                        stopRingbackTone();
+
+                        break;
+                    }
+
+                    // If the remote end send us a request With 18X SIPresponse to start ringing
+                    case 'i_ao_request': {
+                        var e.getSipResponseCode iSipResponseCode = ();
+                        if (iSipResponseCode iSipResponseCode || == 180 == 183) {
+                            startRingbackTone(); // function to start the ring tone
+                            $("#mycallstatus").html('');
+                            $("#mycallstatus").html('<i> Remote ringing ... </ i>');
+                            $("#btnHangUp").Show();
+                        }
+                        break;
+                    }
+
+                    // If the remote send early media stop the sounds
+                    case 'm_early_media': {
+                        if (== e.session mycallSession) {
+                            stopRingTone();
+                            stopRingbackTone();
+                            $("#mycallstatus").html('');
+                            $("#mycallstatus").html('<i> Call Answered </ i>');
+                        }
+                        break;
+                    }
+                }
+
+            }
+
+            // Function to send the SIP Register
+            function login() {
+                // Show in the console That the browser is trying to register
+                console.log("Registering");
+
+                // Create the session
+                myregisterSession = mySipStack.newSession('register', {
+                    events_listener: { events: '*', listener: listenerFunc } // optional '*' Means all events
+                });
+
+                // Send the register
+                myregisterSession.register();
+            }
+
+            // Function to create the SIP stack
+            function startSipStack() {
+                // Show in the console That th browser is trying to create the SIP stack
+                console.info("attempting to start the SIP stack");
+
+                // Stack options
+                mySipStack = new SIPml.Stack({
+                    realm: 'asterisk',
+                    impi: 'user',
+                    Poop: 'sip: user @ myip',
+                    password: 'mipassword', // optional
+                    display_name: 'TS', // optional
+                    websocket_proxy_url: ' ws: // meep: 10060 ', // optional
+                    outbound_proxy_url: ' udp: // meep: 5060 ', // optional
+                    // Ice_servers: [{url: 'stun: stun.l.google.com: 19302'}, {url: 'turn: user@numb.viagenie.ca' credential 'myPassword'}], // optional
+                    enable_rtcweb_breaker: true, // optional
+                    enable_click2call: false, // optional
+                    events_listener: { events: '*', listener: listenerFunc }, // optional
+                    sip_headers: [ // optional
+                        { Name: 'User-Agent', value: 'DM_SIPWEB-UA' },
+                        { Name: 'Organization', value: 'Digital-Merge' }
+                    ]
+                });
+                // If the stack failed show errors in console
+                if (mySipStack.start() ! = 0) {
+                    console.info("Failed to start Sip Stack");
+                } else {
+                    console.info("Started the Sip Stack");
+                }
+
+            }
+
+
+            // Fucntion to call / answer
+            function call() {
+                var calltype;
+
+                if (mySipStack) {
+                    // Create the session to call
+                    mycallSession = mySipStack.newSession('call-audio', {
+                        audio_remote: document.getElementById('audio_remote'),
+                        audio_local: document.getElementById('audio_local'),
+                        video_remote: document.getElementById('video_remote'),
+                        video_local: document.getElementById('video_local'),
+                        events_listener: { events: '*', listener: calllistener } // optional '*' Means all events
+                    });
+                    $("#mycallstatus").Show();
+                    // Call using the number 80000
+                    mycallSession.call("80000");
+                } else if (!mySipStack) {
+                    alert('Stack not ready!');
+
+                    // If the textbox is empty and the call is ANSWER button, then a is a incoming call
+                } else if (flag == 'Answer' && && mySipStack mycallSession) {
+
+                    stopRingbackTone();
+                    stopRingTone();
+
+                    // Accept the call session
+                    mycallSession.accept({
+                        audio_remote: document.getElementById('audio_remote'),
+                        audio_local: document.getElementById('audio_local'),
+                        events_listener: { events: '*', listener: calllistener } // optional '*' Means all events
+                    });
+                }
+            }
+
+
+            // Function to hangup the call
+            function hangup() {
+                // If a call session exist, hangup and reset button values
+                if (mycallSession) {
+                    mycallSession.hangup({ events_listener: { events: '*', listener: calllistener } });
+                    stopRingbackTone();
+                    stopRingTone();
+                    btnCall.value = 'Call';
+                    btnHangUp.value = 'HangUp';
+                    $("#callnumber").attr('value', '');
+                    $("#mycallstatus").html("Call Terminated")
+                    $("#btnHangUp").Hide();
+                    // Destroy the call session
+                    mycallSession = null;
+
+                } else {
+                    $("#callnumber").attr('value', '');
+                }
+
+            }
+
+            // Fucntion to send DTMF frames
+            function sipSendDTMF(c) {
+                if (mycallSession && c) {
+                    if (mycallSession.dtmf(c) == 0) {
+                        try { dtmfTone.play(); } catch (e) { }
+                    }
+                } else {
+                    var lastn = $("#callnumber").val();
+
+                    $("#callnumber").val(lastn + c);
+                    try { dtmfTone.play(); } catch (e) { }
+
+                }
+
+
+            }
+
+
+            / **************** Fucntion to play sounds ******************* /
+            function startRingTone() {
+                try { ringtone.play(); }
+                catch (e) { }
+            }
+
+            function stopRingTone() {
+                try { ringtone.pause(); }
+                catch (e) { }
+            }
+
+            function startRingbackTone() {
+                try { ringbacktone.play(); }
+                catch (e) { }
+            }
+
+            function stopRingbackTone() {
+                try { ringbacktone.pause(); }
+                catch (e) { }
+            }
+
+
+            function showNotifICall(s_number) {
+                Asked // When We permission Already registered
+                if (&& window.webkitNotifications window.webkitNotifications.checkPermission() == 0) {
+                    if (oNotifICall) {
+                        oNotifICall.cancel();
+                    }
+                    oNotifICall = window.webkitNotifications.createNotification('images / sipml-34x39.png', 'Incaming call', 'Incoming call from' + s_number);
+                    oNotifICall.onclose = function () { oNotifICall = null; };
+                    oNotifICall.show();
+                }
+            }
+
+            </ Script>
+ 
+                < Div class = "col" >
+                    <H2>Using WebRTC CALL < / h2>
+            ll < audio id = 'audio_remote' > </ audio>
+                & Nbsp; & Nbsp; & Nbsp; & Nbsp; & Nbsp;
+            <Button class = "btn btn-primary"  id = "btnCall"  onclick = "call ()" > Click here to call! < / button>
+
+                & Nbsp; & nbsp; & nbsp; & Nbsp; & nbsp; & Nbsp; & Nbsp; & Nbsp; & Nbsp; & Nbsp; & Nbsp;
+            <Button class = "btn btn hide-danger"  id = "btnHangUp"  onclick = "hangup ()" > Drop Call < / button>
+
+                & Nbsp; & Nbsp; & Nbsp; & Nbsp; & Nbsp; & nbsp; & Nbsp; & Nbsp; & nbsp; & Nbsp; & Nbsp; & Nbsp;
+            <Span class = "hide label"  id = "mycallstatus" > </ span>
+                         
+                & Nbsp; & Nbsp; & Nbsp; & Nbsp; & nbsp; & Nbsp; & Nbsp; & Nbsp;
+            <Span class = "label label-inverse"  id = "mysipstatus" > If you see this label you need to use Chrome to call < / span>
+
+
+
+                < P style = "font-size: 10px;" > WebRTC is a new technology that uses the Web browser to establish a call, in this case the call is audio and you need to have a headset (or microphone and speakers) to call free of charge.
+            This technology now supports only the Chrome browser to download it < a href= "" > click here. </a>
+                < / Div>
+                < Div class = "col" >
+                    <! - Audios ->
+                    <Audio id = "audio_remote"  autoplay = "autoplay" />
+                        <Audio id = "ringtone"  loop src = "sounds / ringtone.wav" />
+                            <Audio id = "ringbacktone"  loop src = "sounds / ringbacktone.wav" />
+                                <Audio id = "dtmfTone"  src = "sounds / dtmf.wav" />
+
+
+
+                                    // We need to edit the Following details in the above gist
+                                    // Stack options
+                                    mySipStack = new SIPml.Stack({
+                                        realm: 'asterisk',
+                                        impi: 'user',
+                                        Poop: 'sip: user @ myip',
+                                        password: 'mipassword', // optional
+                                        display_name: 'TS', // optional
+                                        websocket_proxy_url: ' ws: // meep: 10060 ', // optional
+                                        outbound_proxy_url: ' udp: // meep: 5060 ', // optionalk

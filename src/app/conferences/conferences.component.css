@@ -1,0 +1,279 @@
+@font-face {
+    font-family: cylb;
+    src: url('/mybc/assets/fonts/c&lb.ttf');
+}
+
+.line {
+    display: block;
+    height: 5px;
+    background: rgb(158,158,158);
+}
+
+.card {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row;
+    padding: 0px;
+}
+
+.card-left {
+    padding: 10px;
+    width: 95%;
+    box-shadow: none;
+    height: 100vh;
+    display: flex;
+    flex-flow: row;
+    padding: 0px;    
+}
+
+.card-right {
+    width: 5%;
+    border-style: solid;
+    border-color: rgb(158,158,158);
+    border-width: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    padding: 10px;
+    box-shadow: none;
+}
+
+.card-grid {
+    width: 80%;
+}
+
+.card-conferences {
+    width: 20%;
+    border-style: solid;
+    border-color: rgb(158,158,158);
+    border-width: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    padding: 10px;
+    box-shadow: none;    
+}
+
+.card-conference-img {
+    width: 80px;
+    height: 80px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.mdl-data-table {
+    width: 100%;
+}
+
+.mdl-button--raised.mdl-button--colored {
+    color: #FFF;
+    height: 24px;
+    font-size: 10px;
+    text-transform: lowercase;
+}
+
+.mdl-textfield {
+    padding: 10px;
+}
+
+.mdl-textfield__expandable {
+    padding: 5px;
+}
+
+.cdrHeader {
+    max-height: 32px;
+    padding-bottom: 0px !important;
+}
+
+.cdrContent {
+    background-color: white;
+}
+
+.md-avatar-icon {
+    margin-right:18px;
+    width: 16px; 
+}
+
+.item {
+    min-height: 20px;
+    max-height: 25px;
+}
+
+.item td {
+    height: 24px;
+}
+
+.item-icon {
+    min-width: 60px;
+    width: 10%;
+    height: 100%;
+    text-align: center;
+}
+
+.item-icon md-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.item-conferencename {
+    font-family: cylb;
+    min-width: 150px;
+    width: 20%;
+    text-align: left;
+}
+
+
+.item-conferencedate {
+    font-family: cylb;
+    min-width: 90px;
+    width: 20%;
+    text-align: center;
+}
+
+.item-conferencedate  div {
+    width: 100%;
+    height: 32px;
+    border: 1px solid;
+    border-color: rgb(176,203,31);
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: left;
+    font-family: cylb;
+    font-size: 14px;
+}
+
+.item-conferenceparticipants {
+    width: 30%;
+}
+
+.header-buscar {
+    min-width: 68px;
+    width: 10%;
+    text-align: center;
+
+}
+
+.header-buscar div {
+    width: 54px;
+    height: 32px;
+    border: 1px solid;
+    border-color: rgb(176,203,31);
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.header-buscar div md-icon {
+    width: 24px;
+    height: 24px;
+
+}
+
+.header-name {
+    min-width: 150px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    vertical-align: center;
+}
+
+.header-name div {
+    width: 50%;
+}
+
+.header-name .mdl-textfield {
+    border: 1px solid;
+    border-color: rgb(176,203,31);
+    border-radius: 15px;
+}
+
+.header-name md-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.header-callerdate {
+    font-family: cylb;
+    min-width: 90px;
+    width: 20%;
+}
+
+.header-callerdate  div {
+    width: 100%;
+    height: 60px;
+    border: 1px solid;
+    border-color: rgb(176,203,31);
+    border-radius: 15px;
+    text-align: left;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#iniDate {
+    position: relative;
+    float: left;
+    width: 45%;
+}
+
+#endDate {
+    position: relative;
+    float: right;
+    width: 45%;
+}
+
+.header-callerdate div vaadin-date-picker input#input {
+    font-size: 12px;
+}
+
+.header-phone {
+    min-width: 68px;
+    width: 100%;
+    text-align: center;
+}
+
+.header-phone md-icon {
+    width: 48px;
+    height: 48px;
+}
+
+.header-actions {
+    min-width: 160px;
+    width: 30%;
+    text-align: center;
+}
+
+.header-delete {
+    width: 10%px;
+}
+
+
+.item-phone {
+    font-family: cylb;
+    font-size: 14px;
+}
+
+.mdl-textfield__input {
+    font-family: cylb;
+    font-size: 14px;
+}
+
+.scrollable {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.scrollable item > tr {
+    min-height: 20px;
+    height: 25px;
+}
+
+md-nav-list md-list-item .md-list-item, md-nav-list a[md-list-item] .md-list-item {
+    min-height: 20px;
+    height: 25px;   
+}

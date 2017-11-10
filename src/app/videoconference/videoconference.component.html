@@ -1,0 +1,18 @@
+<mdl-card class="card">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--8-col-desktop">
+            <span>Comparta la siguiente ruta: {{ _urlRoom }}</span>
+        </div>        
+        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--2-col-desktop">
+            <button mdl-button mdl-button-type="icon" (click)="start()" title="Iniciar Video Conferencia">
+                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">queue_play_next</mdl-icon>
+                </button>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--2-col-desktop">
+            <button mdl-button mdl-button-type="icon" (click)="dispose()" title="Finalizar Video Conferencia">
+                        <mdl-icon style="font-size:24px;color:rgb(63,165,59);">remove_from_queue</mdl-icon>
+                    </button>
+        </div>
+    </div>
+</mdl-card>
+<div #videoconference></div>

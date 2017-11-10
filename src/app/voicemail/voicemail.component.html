@@ -1,0 +1,53 @@
+<mdl-card class="card">
+        <table>
+            <colgroup>
+                <col class="item-icon">
+                <col class="item-callerid">
+                <col class="item-icon">
+                <col class="item-callerdate">
+                <col class="item-icon">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th colspan="2">
+                    </th>
+                    <th>
+                    </th>
+                    <th colspan="2" class="header-callerdate">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <div class="line">
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="_voicemails?.length < 1" ><td colspan=5>{{  _no_records }}</td></tr>
+                <tr *ngFor="let voicemail of _voicemails" class="item">
+                    <td class="item-icon">
+                        <img src="/mybc/assets/images/contactheader.svg">
+                    </td>
+                    <td class="item-callerid">
+                        <div>{{ voicemail.voic_origin }}</div>
+                    </td>
+                    <td class="item-icon">
+                    </td>
+                    <td class="item-callerdate"><div>{{ voicemail.voic_date }}</div></td>
+                    <td class="item-player"><audio [attr.src]="voicemail.voic_file" audioplayer controls></audio>
+                    <td class="item-icon">
+                        <button mdl-button  mdl-button-type="icon" (click)="downloadFile(voicemail.voic_file)">
+                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">file_download</mdl-icon>
+                            </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+</mdl-card>

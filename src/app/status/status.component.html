@@ -1,0 +1,16 @@
+<div class="mdl-layout__header-row">
+  <div class="in-column">
+    <div class="in-row"><mdl-icon class="status-user-img" svgSrc="/mybc/assets/images/user.svg"></mdl-icon><span id="name" class="status-user-font">{{ _userFullname }}</span></div>
+    <div class="in-row"><mdl-icon class="status-phone-img" svgSrc="/mybc/assets/images/ext.svg"></mdl-icon><span id="phone" class="status-phone-font">{{ _userPhone }}</span></div>
+  </div>
+  <div class="mdl-layout-spacer"></div>
+  <div class="in-row">
+    <div class="in-column">
+      <div id="name" class="status-time-font">{{ _data | date:'hh:mm' }}</div>
+      <div id="phone" class="status-time-font">{{ _data | date:'dd/MM/yyyy' }}</div>
+    </div>
+    <div class="in-column">
+      <mdl-icon svgSrc="/mybc/assets/images/exit.svg"></mdl-icon>
+    </div>
+  </div>
+</div>

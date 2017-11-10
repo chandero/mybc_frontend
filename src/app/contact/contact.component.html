@@ -1,0 +1,56 @@
+<mdl-card class="contact mdl-card">
+  <form [formGroup]="form" class="contact form">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--2-col-tablet mdl-cell--2-col-desktop">
+        <img src="/mybc/assets/images/contactheader.svg" class="contact image-header">
+      </div>
+      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--6-col-tablet mdl-cell--10-col-desktop">
+        <mdl-textfield label="Nombre" type="text" formControlName="contactName" floating-label class="contact_mdl-textfield"></mdl-textfield>
+      </div>
+    </div>
+    <div class="mdl-grid">
+      <!-- phone one and phone two -->
+      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--hide-phone mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+            <img src="/mybc/assets/images/phonenumber.svg" class="contact image-phone">
+          </div>
+          <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--9-col-desktop">
+            <mdl-textfield label="Teléfono Fijo" type="text" formControlName="contactPhoneOne" floating-label></mdl-textfield>
+          </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--hide-phone mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+            <img src="/mybc/assets/images/phonenumber.svg" class="contact image-phone">
+          </div>
+          <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--9-col-desktop">
+            <mdl-textfield label="Teléfono Móvil" type="text" formControlName="contactPhoneTwo" floating-label></mdl-textfield>
+          </div>
+        </div>
+      </div>
+      <!-- email and address -->
+      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--hide-phone mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+            <img src="/mybc/assets/images/email.svg" class="contact image-email">
+          </div>
+          <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--9-col-desktop">
+            <mdl-textfield label="Email" name="email" type="text" formControlName="contactEmail" floating-label pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$"
+              error-msg="Por favor ingrese un email correcto!"></mdl-textfield>
+          </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--hide-phone mdl-cell--8-col-tablet mdl-cell--3-col-desktop">
+            <img src="/mybc/assets/images/address.svg" class="contact image-address">
+          </div>
+          <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--9-col-desktop">
+            <mdl-textfield label="Dirección" type="text" formControlName="contactAddress" floating-label></mdl-textfield>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      <button mdl-button (click)="onSubmit()" [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">Submit</button>
+    </p>
+  </form>
+</mdl-card>

@@ -1,0 +1,74 @@
+<div class="mybc-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer ">
+  <!-- Status -->
+  <header class="mybc-header mdl-layout__header">
+    <!-- <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div> -->
+    <div class="mdl-layout__header-row">
+      <div class="in-column mdl-layout__header_row">
+        <div class="in-row">
+          <img class="status-user-img" src="/mybc/assets/images/user.svg"><span id="name" class="status-user-font">{{ _userFullname }}</span></div>
+        <div class="in-row">
+          <img class="status-phone-img" src="{{_extensionStatusImageUrl}}"><span id="phone" class="status-phone-font">{{ _userPhone }}</span></div>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+      <dashboard-header></dashboard-header>
+      <!-- aqui colocar los graficos para administrar llamada entrante y saliente -->
+      <div class="mdl-layout-spacer"></div>
+      <div class="flex">
+          <div id="name" class="flex-row status-time-font">{{ _data | date:'hh:mm' }}</div>
+          <div id="phone" class="flex-row status-time-font">{{ _data | date:'dd/MM/yyyy' }}</div>
+      </div>
+      <img class="exit-img" src="/mybc/assets/images/exit.svg" style="cursor:pointer;">
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <div class="mybc-drawer mdl-layout__drawer">
+    <span class="mdl-layout-title">
+    <img src="/mybc/assets/images/logo.svg" class="menu-logo">
+  </span>
+    <nav class="mdl-navigation">
+      <a routerLink="/dashboard/webphone" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/webphone.png" class="menu-image-webphone" />
+        <div class="menu-title-webphone">WebPhone</div>
+      </a>
+      <a routerLink="/dashboard/cdr" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/cdr.png" class="menu-image-llamadas" />
+        <div class="menu-title-llamadas">Llamadas</div>
+      </a>
+      <a routerLink="/dashboard/contacts" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/contact.png" class="menu-image-contactos" />
+        <div class="menu-title-contactos">Contactos</div>
+      </a>
+     <!-- <a routerLink="/dashboard/conferences" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/conference.png" class="menu-image-conferencia" />
+        <div class="menu-title-conferencia">Conferencia</div>
+      </a>
+      -->
+      <a routerLink="/dashboard/videoconference" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/conference.png" class="menu-image-conferencia" />
+        <div class="menu-title-conferencia">Video Conferencia</div>
+      </a>
+      <a routerLink="/dashboard/voicemail" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/voicemail.png" class="menu-image-voicemail" />
+        <div class="menu-title-voicemail">Voicemail</div>
+      </a>
+      <!-- <a routerLink="/dashboard/followme" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/followme.png" class="menu-image-followme" />
+        <div class="menu-title-followme">Sigueme</div>
+      </a>
+      -->
+
+      <!-- <a routerLink="/dashboard/setup" class="mdl-navigation__link">
+        <img src="/mybc/assets/images/setup.png" class="menu-image-setup" />
+        <div class="menu-title-setup">Configuración</div>
+      </a>
+      -->
+    </nav>
+  </div>
+  <!-- Content -->
+  <main class="mdl-layout__content">
+    <router-outlet></router-outlet>
+  </main>
+  <Audio id = "audio_remote"  autoplay = "autoplay"></Audio>
+  <Audio id = "audio_local"   autoplay = "autoplay"></Audio>
+</div>

@@ -1,0 +1,76 @@
+<mdl-card class="card">
+  <mdl-card class="card-left">
+    <table mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp>
+      <colgroup>
+        <col class="item-icon">
+        <col class="item-contactname">
+        <col class="item-contactphone">
+        <col class="item-contactaction">
+        <col class="item-delete">
+      </colgroup>
+      <thead>
+        <tr>
+          <th colspan="2">
+            <div class="header-name">
+              <div>
+                <mdl-textfield type="text" icon="search"></mdl-textfield>
+              </div>
+              <div style="display:block; margin: auto;">
+                <img src="/mybc/assets/images/contactheader.svg">
+                <!-- <button mdl-button mdl-button-type="icon" (click)="newContact()"><mdl-icon style="font-size:28px;">add</mdl-icon></button> -->
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="header-phone">
+              <img src="/mybc/assets/images/phonenumber.svg">
+            </div>
+          </th>
+          <th class="header-actions">
+            <div>
+              <span></span>
+            </div>
+          </th>
+          <th class="header-delete">
+            <div>
+              <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5">
+            <div class="line">
+            </div>
+          </td>
+        </tr>
+        <tr *ngFor="let contact of _contacts" class="item">
+          <td class="item-icon">
+            <mdl-icon svgSrc="/mybc/assets/images/contactheader.svg" class="md-16"></mdl-icon>
+          </td>
+          <td class="item-callerid">{{ contact.cont_name }}</td>
+          <td class="item-callerid">{{ contact.cont_number}}</td>
+          <td class="item-actions">
+            <div *ngIf="_notInCall && !_ringing"> <button class="mdl-button mdl-js-button mdl-button--icon" (click)="dial(contact.cont_number)"><mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon></button> </div>
+            <div *ngIf="_inCall"> <button class="mdl-button mdl-js-button mdl-button--icon" (click)="hangup()"><mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon></button> </div>
+            <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><mdl-icon style="font-size:24px;color:rgb(227,30,36);">delete_sweep</mdl-icon></button> -->
+            <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><mdl-icon style="font-size:24px;color:rgb(91,90,80)">create</mdl-icon></button> -->
+          </td>
+          <td class="item-icon">
+            <mdl-checkbox></mdl-checkbox>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </mdl-card>
+  <mdl-card class="card-right">
+    <button mdl-button mdl-button-type="icon"><mdl-icon>settings</mdl-icon></button>
+  </mdl-card>
+</mdl-card>

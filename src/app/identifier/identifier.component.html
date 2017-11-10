@@ -1,0 +1,39 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--4-col-desktop"></div>
+  <div class="mdl-cell mdl-cell--4-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+    <div class="mybc-center mybc-login-width" >
+    <img id="profile-img" class="profile-img-card" src="assets/images/logo.png" />
+    <p></p>
+    <div class="card card-container mybc-font mybc-background mybc-center mybc-login-container">
+      <p id="profile-name" class="profile-name-card"></p>
+      <form class="form-signin">
+<!--      <span>usuario</span> -->
+<!--        <div class="mybc-login-input"> -->
+          <mdl-textfield name="_identity" floating-label autofocus required [(ngModel)]="_identity" class="mdl-texfield mybc-login-input"  label="Usuario"
+                    type="text" (keyup.enter)="validateUser()"></mdl-textfield>
+<!--          <span style="color: white;" [ngClass]="{ 'hide': _uservalid }">{{ _usererror_label}}</span> -->
+<!--        </div> -->
+      <p></p>
+      <button class="btn mybc-login-button" type="button" (click)="validateUser()">siguente</button>
+    </form>
+    <!-- /form -->
+    <p></p>
+    <a href="#" class="forgot-password mybc-login-forgot">
+                olvidó su contraseña?
+            </a>
+  </div>
+  <!-- /card-container -->
+  <div class="mybc-lang-container">
+    <div id="lang_icon"></div>
+    <div id="mybc-lang-select">
+      <select class="form-control">
+       <option value="es">es- español</option>
+       <option value="en">en- english</option>
+      </select>
+
+    </div>
+  </div>
+  <div>
+</div>
+<div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--4-col-desktop"></div>
+</div>

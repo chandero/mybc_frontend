@@ -10,14 +10,16 @@
           <img class="status-phone-img" src="{{_extensionStatusImageUrl}}"><span id="phone" class="status-phone-font">{{ _userPhone }}</span></div>
       </div>
       <div class="mdl-layout-spacer"></div>
-      <dashboard-header></dashboard-header>
+      <dashboard-header class="phone-header"></dashboard-header>
       <!-- aqui colocar los graficos para administrar llamada entrante y saliente -->
       <div class="mdl-layout-spacer"></div>
-      <div class="flex">
+      <div class="in-column flex">
           <div id="name" class="flex-row status-time-font">{{ _data | date:'hh:mm' }}</div>
           <div id="phone" class="flex-row status-time-font">{{ _data | date:'dd/MM/yyyy' }}</div>
       </div>
-      <img class="exit-img" src="/mybc/assets/images/exit.svg" style="cursor:pointer;">
+      <div class="in-column">
+        <img class="exit-img" src="/mybc/assets/images/exit.svg" style="cursor:pointer;">
+      </div>
     </div>
   </header>
 
@@ -28,15 +30,15 @@
   </span>
     <nav class="mdl-navigation">
       <a routerLink="/dashboard/webphone" class="mdl-navigation__link">
-        <img src="/mybc/assets/images/webphone.png" class="menu-image-webphone" />
-        <div class="menu-title-webphone">WebPhone</div>
+        <img src="/mybc/assets/images/webphone2.svg" class="menu-image-webphone" />
+        <div class="menu-title-webphone">Webphone</div>
       </a>
       <a routerLink="/dashboard/cdr" class="mdl-navigation__link">
-        <img src="/mybc/assets/images/cdr.png" class="menu-image-llamadas" />
+        <img src="/mybc/assets/images/cdr.svg" class="menu-image-llamadas" />
         <div class="menu-title-llamadas">Llamadas</div>
       </a>
       <a routerLink="/dashboard/contacts" class="mdl-navigation__link">
-        <img src="/mybc/assets/images/contact.png" class="menu-image-contactos" />
+        <img src="/mybc/assets/images/contact.svg" class="menu-image-contactos" />
         <div class="menu-title-contactos">Contactos</div>
       </a>
      <!-- <a routerLink="/dashboard/conferences" class="mdl-navigation__link">
@@ -45,11 +47,11 @@
       </a>
       -->
       <a routerLink="/dashboard/videoconference" class="mdl-navigation__link">
-        <img src="/mybc/assets/images/conference.png" class="menu-image-conferencia" />
-        <div class="menu-title-conferencia">Video Conferencia</div>
+        <img src="/mybc/assets/images/meet.svg" class="menu-image-conferencia" />
+        <div class="menu-title-conferencia">Conferencia</div>
       </a>
       <a routerLink="/dashboard/voicemail" class="mdl-navigation__link">
-        <img src="/mybc/assets/images/voicemail.png" class="menu-image-voicemail" />
+        <img src="/mybc/assets/images/voicemail.svg" class="menu-image-voicemail" />
         <div class="menu-title-voicemail">Voicemail</div>
       </a>
       <!-- <a routerLink="/dashboard/followme" class="mdl-navigation__link">

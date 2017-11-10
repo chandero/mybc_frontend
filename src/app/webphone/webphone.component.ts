@@ -61,13 +61,24 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
     this._numberToDial.nativeElement.focus();
   }
 
+  @HostListener('document:keydown', ['$event'])
+  handleKeydownEvent(event: KeyboardEvent) {
+    this._key = event.key;
+    switch(this._key){
+      case '0': this.zeroHold();
+        break;
+      default:
+        break;
+    }
+  }
+
   @HostListener('document:keyup', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
+  handleKeyupEvent(event: KeyboardEvent) {
     console.log("event keyup:"+event);
     event.stopPropagation();
     this._key = event.key;
     switch (this._key) {
-      case '0': this.numberClick(0);
+      case '0': this.zeroCancel();//this.numberClick(0);
         break;
       case '1': this.numberClick(1);
         break;
@@ -92,7 +103,7 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
       case '*': this.numberClick('*');
         break;
       case '+': this.numberClick('+');
-        break;        
+        break;
       case 'Enter': this.dial();
         break;
       case 'Backspace' : this._dialnumber = this._dialnumber.slice(0, -1);
@@ -114,12 +125,12 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
   private zeroHold(){
     this._zeroDown = false;
     this._zeroUp = false;
-    this._downTimer = setTimeout( () => this.zeroAction(), 800);    
+    this._downTimer = setTimeout( () => this.zeroAction(), 800);
   }
 
-  
+
   private zeroCancel(){
-    if (this._zeroDown) 
+    if (this._zeroDown)
     {
       clearTimeout(this._downTimer);
       this._downTimer = null;

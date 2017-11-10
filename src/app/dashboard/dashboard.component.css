@@ -12,6 +12,11 @@ body {
         padding-left: 0px !important;
     }
 
+    .mdl-layout__header-row {
+      height: 96px;
+      padding: 0px 40px 0px 40px;
+    }
+
     .mdl-layout__content {
         margin-left: 0px;
         font-family: cylb !important;
@@ -20,12 +25,23 @@ body {
 
 @media screen and (min-width: 1024px){
     .mdl-layout__header {
-        padding-left: 240px !important;
+        padding-left: 128px !important;
     }
+
+    .mdl-layout__header-row {
+      height: 96px;
+    }
+
     .mdl-layout__content {
         margin-left: 240px;
         font-family: cylb !important;
     }
+}
+
+.in-column {
+  padding-top: 24px;
+  padding-left: 10px;
+  text-transform: capitalize;
 }
 
 .status-user-img {
@@ -66,6 +82,13 @@ body {
 
 .mybc-header {
     background-color: #000;
+    min-height: 96px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.phone-header {
+  padding-top: 30px;
 }
 
 .mybc-drawer {
@@ -79,22 +102,23 @@ body {
 
 
 .mdl-layout-title {
-/*    width: 96px; */
+    height: 96px;
     padding-left: 0px !important;
     margin: 0 auto !important;
 }
 
 .mdl-layout__drawer {
     font-family: cylb;
-/*    width: 96px; */
+    width: 128px;
     height: 100%;
     background: #000;
+    text-align: center;
 }
 
 .mdl-navigation__link {
-    height: 40px;
-/*    padding: 16px 0px !important;
-    margin: 0 auto !important; */
+    height: 72px;
+    padding: 0px 0px !important;
+    /*margin: 0 auto !important; */
 }
 
 .mdl-navigation__link:hover {
@@ -110,8 +134,10 @@ body {
 }
 
 .menu-logo {
-    width: 76.65px;
-    height: 47.25px;
+     /*width: 76.65px;
+    height: 47.25px; */
+    width: 96px;
+    height: 96px;
 }
 
 .menu-image {
@@ -120,66 +146,84 @@ body {
 }
 
 .menu-image-webphone {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 46px;
 }
 
 .menu-title-webphone {
-    font-size: 14px;
+    font-size: 16px;
+    color: #fff;
 }
 
 .menu-image-llamadas {
-    width: 32px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-llamadas {
-    font-size: 16px;
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .menu-image-contactos {
-    width: 32px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-contactos {
-    font-size: 16px;
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .menu-image-conferencia {
-    width: 32px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-conferencia {
-    font-size: 16px;
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .menu-image-voicemail {
-    width: 32px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-voicemail {
-    font-size: 16px;
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .menu-image-followme {
-    width: 62px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-followme {
-    font-size: 16px;
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .menu-image-setup {
-    width: 32px;
-    height: 32px;
+  width: 40px;
+  height: 46px;
+
 }
 
 .menu-title-setup {
-    font-size: 14px;
+  font-size: 16px;
+  color: #fff;
 }
 
 .status-user-img {

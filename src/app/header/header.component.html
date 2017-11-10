@@ -1,11 +1,11 @@
 <div *ngIf="_ringing || _incall || _inprogress">
     <div class="statusText">{{ _statusText }}</div>
-    <div *ngIf="_incall">{{ _identifier }}</div>
-    <div *ngIf="_inprogress">{{ _identifier }}</div>
-    <div *ngIf="_incall">{{ _dialnumber }}</div>
-    <div *ngIf="_inprogress">{{ _dialnumber }}</div>
-    <div *ngIf="_ringing || _inprogress || _incall">
-         <app-clock [enabled]="_startclock"></app-clock>
+    <div class="statusText" *ngIf="_incall">{{ _identifier }}</div>
+    <div class="statusText" *ngIf="_inprogress">{{ _identifier }}</div>
+    <div class="statusText" *ngIf="_incall">{{ _dialnumber }}</div>
+    <div class="statusText" *ngIf="_inprogress">{{ _dialnumber }}</div>
+    <div class="statusText" *ngIf="_inprogress || _incall">
+         <app-clock style="color: #fff" [enabled]="_startclock"></app-clock>
     </div>
     <div>
         <button *ngIf="_ringing" mdl-button mdl-button-type="icon" (click)="answer()">

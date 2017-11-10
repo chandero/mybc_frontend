@@ -17,7 +17,7 @@
             <div *ngIf="_incall">{{ _dialnumber }}</div>
             <div *ngIf="_inprogress">{{ _dialnumber }}</div>
             <div>
-                <app-clock [enabled]="_startclock"></app-clock>
+                <app-clock *ngIf="_incall || _inprogress" [enabled]="_startclock"></app-clock>
             </div>
         </mdl-card>
     </div>
@@ -64,24 +64,24 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button *ngIf="_idle" (click)="dial()" class="pad-button mdl-button">
-                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call</mdl-icon>
+                    <button *ngIf="_dialnumber.length > 0" (click)="dial()" class="pad-button mdl-button" style="background-color:rgb(63,165,59); color: #fff;">
+                               <mdl-icon style="color:#fff;">call</mdl-icon>
 <span>Llamar</span>
 </button>
-                    <button *ngIf="_ringing" (click)="answer()" class="pad-button mdl-button">
-                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call</mdl-icon>
+                    <button *ngIf="_ringing" (click)="answer()" class="pad-button mdl-button" style="background-color:rgb(63,165,59); color: #fff;">
+                               <mdl-icon style="color:#fff;">call</mdl-icon>
 <span>Aceptar</span>
 </button>
-                    <button *ngIf="_ringing" (click)="reject()" class="pad-button mdl-button">
-                               <mdl-icon style="font-size:16px;color:rgb(63,165,59);">call_end</mdl-icon>
+                    <button *ngIf="_ringing" (click)="reject()" class="pad-button mdl-button" style="background-color:rgb(255,77,0); color: #fff;">
+                               <mdl-icon style="background-color:rgb(255,77,0); color: #fff;">call_end</mdl-icon>
 <span>Rechazar</span>
 </button>
-                    <button *ngIf="_incall" (click)="hangup()" class="pad-button mdl-button">
-                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
+                    <button *ngIf="_incall" (click)="hangup()" class="pad-button mdl-button" style="background-color:rgb(255,77,0); color: #fff;">
+                               <mdl-icon style="background-color:rgb(255,77,0); color: #fff;">call_end</mdl-icon>
 <span>Finalizar</span>
 </button>
-                    <button *ngIf="_inprogress" (click)="hangup()" class="pad-button mdl-button">
-                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
+                    <button *ngIf="_inprogress" (click)="hangup()" class="pad-button mdl-button" style="background-color:rgb(255,77,0); color: #fff;">
+                               <mdl-icon style="background-color:rgb(255,77,0); color: #fff;">call_end</mdl-icon>
 <span>Finalizar</span>
 </button>
                 </td>
@@ -105,10 +105,10 @@
             </tr>
             <tr>
                 <td colspan="5">
-                    <table *ngIf="_incall">
+                    <table *ngIf="_incall" style="background-color: #000">
                         <tr>
                             <td>
-                                <mdl-icon-toggle [(ngModel)]="_isMuted" (change)="togglemute()" title="Silencio">mic_off</mdl-icon-toggle>
+                                <mdl-icon-toggle [(ngModel)]="_isMuted" (change)="togglemute()" title="Silencio" style="font-size:16px;color:rgb(255,255,255);">mic_off</mdl-icon-toggle>
                             </td>
                             <!--
                 <td>
@@ -121,8 +121,8 @@
                 </td>
                 -->
                             <td>
-                                <button mdl-button mdl-button-type="icon" (click)="_transferDialog.show()" #transferButton title="Transferir">
-                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone_forwarded</mdl-icon>
+                                <button mdl-button mdl-button-type="icon" (click)="_transferDialog.show()" #transferButton title="Transferir" style="font-size:16px;color:rgb(255,255,255);">
+                                    <mdl-icon >phone_forwarded</mdl-icon>
                                 </button>
                             </td>
                             <!--

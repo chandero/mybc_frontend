@@ -8,8 +8,16 @@ body {
 }
 
 @media screen and (max-width: 1024px){
+    .mdl-layout__drawer-button {
+        color: #fff !important;
+    }
+
     .mdl-layout__header {
         padding-left: 0px !important;
+    }
+
+    .dashboard-footer {
+        padding-left: 10px !important;
     }
 
     .mdl-layout__header-row {
@@ -24,8 +32,16 @@ body {
 }
 
 @media screen and (min-width: 1024px){
+    .mdl-layout__drawer-button {
+        color: #fff !important;
+    }
+
     .mdl-layout__header {
-        padding-left: 128px !important;
+        padding-left: 0px !important;
+    }
+
+    .dashboard-footer {
+        padding-left: 10px !important;
     }
 
     .mdl-layout__header-row {
@@ -33,7 +49,7 @@ body {
     }
 
     .mdl-layout__content {
-        margin-left: 240px;
+        margin-left: 0px;
         font-family: cylb !important;
     }
 }
@@ -47,6 +63,15 @@ body {
 .status-user-img {
     width: 32px;
     height: 32px;
+}
+
+.status-clock-img{
+    width: 16px;
+    height: 16px;
+}
+.status-date-img{
+    width: 16px;
+    height: 16px;
 }
 
 .status-user-font {
@@ -69,7 +94,7 @@ body {
 }
 
 .status-time-font {
-    text-align: center;
+    float: right;
     font-family: cylb;
     font-size: 14px;
     color: #fff;

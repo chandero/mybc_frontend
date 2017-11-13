@@ -14,19 +14,19 @@
                     </button>
         </div>
     </div>
-    <div style="margin-top:40px;margin-bottom:40px;margin-left:auto;margin-right:auto;text-align:center;">
+    <div style="margin-top:40px;margin-bottom:40px;margin-left:auto;margin-right:auto;text-align:center;" *ngIf="_urlRoom != ''">
 
       <!-- Twitter -->
-      <a href="https://twitter.com/home?status=" title="Compartir en Twitter" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--twitter"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
+      <a [href]="_twitterUrl" title="Compartir en Twitter" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--twitter"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
        <!-- Facebook -->
-      <a href="https://www.facebook.com/sharer/sharer.php?u=" title="Compartir en Facebook" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--facebook"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
+      <a [href]="_facebookUrl" title="Compartir en Facebook" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--facebook"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
       <!-- Google+ -->
-      <a href="https://plus.google.com/share?url=" title="Compartir en Google+" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--googleplus"><i class="fa fa-google-plus fa-fw"></i> Google+</a>
+      <a [href]="_googleUrl" title="Compartir en Google+" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--googleplus"><i class="fa fa-google-plus fa-fw"></i> Google+</a>
       <!-- StumbleUpon -->
       <!-- <a href="http://www.stumbleupon.com/submit?url=" title="Share on StumbleUpon" target="_blank" data-placement="top" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--stumbleupon"><i class="fa fa-stumbleupon fa-fw"></i> Stumbleupon</a> -->
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=" title="Compartir en LinkedIn" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--linkedin"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a>
+      <a [href]="_linkedUrl" title="Compartir en LinkedIn" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--linkedin"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a>
 
       </div>
 </mdl-card>
-<div #videoconference></div>
+<div #videoconference style="width:800px; height: 600px;"></div>

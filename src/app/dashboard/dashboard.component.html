@@ -1,9 +1,12 @@
-<div class="mybc-layout mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer ">
+<div class="mdl-layout mdl-js-layout">
   <!-- Status -->
-  <header class="mybc-header mdl-layout__header">
-    <!-- <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div> -->
+  <header class="mdl-layout__header" style="background-color: #000; border-radius:0px 0px 20px 20px;">
+   <!--  <div class="mdl-layout-icon" role="button"><i class="material-icons" style="color: #fff;">menu</i></div> -->
     <div class="mdl-layout__header-row">
-      <div class="in-column mdl-layout__header_row">
+      <span class="mdl-layout-title"> 
+        <img src="/mybc/assets/images/logo.svg" class="menu-logo">
+      </span>
+      <div class="in-column">
         <div class="in-row">
           <img class="status-user-img" src="/mybc/assets/images/user.svg"><span id="name" class="status-user-font">{{ _userFullname }}</span></div>
         <div class="in-row">
@@ -13,21 +16,23 @@
       <dashboard-header class="phone-header"></dashboard-header>
       <!-- aqui colocar los graficos para administrar llamada entrante y saliente -->
       <div class="mdl-layout-spacer"></div>
-      <div class="in-column flex">
-          <div id="name" class="flex-row status-time-font">{{ _data | date:'hh:mm' }}</div>
-          <div id="phone" class="flex-row status-time-font">{{ _data | date:'dd/MM/yyyy' }}</div>
+      <div class="in-column">
+        <div class="in-row"><img class="status-clock-img" src="/mybc/assets/images/clock.svg"><span id="name" class="flex-row status-time-font">{{ _data | date:'hh:mm' }}</span></div>
+        <div class="in-row"><img class="status-date-img" src="/mybc/assets/images/calendar.svg"><span id="phone" class="flex-row status-time-font">{{ _data | date:'dd/MM/yyyy' }}</span></div>
       </div>
       <div class="in-column">
-        <img class="exit-img" src="/mybc/assets/images/exit.svg" style="cursor:pointer;">
+        <button mdl-button  #logoutButton (click)="_logoutDialog.show()">
+          <img class="exit-img" src="/mybc/assets/images/exit.svg" style="cursor:pointer;">
+        </button>
       </div>
     </div>
   </header>
 
   <!-- Menu -->
-  <div class="mybc-drawer mdl-layout__drawer">
+  <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">
-    <img src="/mybc/assets/images/logo.svg" class="menu-logo">
-  </span>
+      <img src="/mybc/assets/images/logo.svg" class="menu-logo">
+    </span>
     <nav class="mdl-navigation">
       <a routerLink="/dashboard/webphone" class="mdl-navigation__link">
         <img src="/mybc/assets/images/webphone2.svg" class="menu-image-webphone" />
@@ -71,6 +76,25 @@
   <main class="mdl-layout__content">
     <router-outlet></router-outlet>
   </main>
+  <div class="dashboard-footer">
+      <hr style="width: 184px; height: 2px;">
+      <img src="/mybc/assets/images/logoanywhere.svg" style="margin:-28px 0px 0px 0px;width:96px;height:32px;">
+      <img src="/mybc/assets/images/cloudtools.svg" style="margin:-28px 0px 0px 0px;width:48px;height:32px;">
+  </div>
   <Audio id = "audio_remote"  autoplay = "autoplay"></Audio>
   <Audio id = "audio_local"   autoplay = "autoplay"></Audio>
 </div>
+
+<mdl-dialog #_logoutDialog [mdl-dialog-config]="{
+  clickOutsideToClose: true,
+  styles:{'width': '400px'},
+  isModal:true,
+  openFrom: logoutButton,
+  enterTransitionDuration: 400,
+  leaveTransitionDuration: 400}">
+<h3 class="mdl-dialog__title">Cerrar Sesión</h3>
+<div class="mdl-dialog__actions">
+    <button mdl-button (click)="_logoutDialog.close(); logout();" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Sí</button>
+    <button mdl-button (click)="_logoutDialog.close()" mdl-ripple>No</button>
+</div>
+</mdl-dialog>

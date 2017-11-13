@@ -8,7 +8,6 @@ export class AuthGuard implements CanActivate {
 
     canActivate() {
         if (localStorage.getItem('mybcuser')) {
-            // logged in so return true
             return true;
         }
 

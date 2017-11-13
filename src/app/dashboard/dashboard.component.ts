@@ -1,4 +1,6 @@
 import { Component, OnInit, Attribute } from '@angular/core';
+import { Router } from '@angular/router';
+import { MdlDialogService, MdlSnackbarService, IOpenCloseRect, MdlDialogComponent } from '@angular-mdl/core';
 import { WebphoneSIPmlService } from '../services/webphone_sipml.service';
 import { GoogleService } from '../services/google.service';
 
@@ -12,6 +14,8 @@ export class DashboardComponent implements OnInit {
   private _userFullname: string = localStorage.getItem("mybcname");
   private _userPhone: string = localStorage.getItem("mybcexten");
 
+  private _transferDialog: MdlDialogComponent;  
+
   private _extensionStatusImageUrl: string;
   private _data;
   private _format;
@@ -21,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   private auth2: any;
 
-  constructor( @Attribute("data") data, private webphoneService: WebphoneSIPmlService, private googleService: GoogleService) {
+  constructor( @Attribute("data") data, private router: Router, private webphoneService: WebphoneSIPmlService, private googleService: GoogleService) {
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
     webphoneService.endedCall$.subscribe(e => this.endedHandler(e));
@@ -39,6 +43,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  private logout() {
+    localStorage.removeItem('mybcuser');
+    this.router.navigate(['/login/identifier']);
   }
 
   private progressHandler(e: any) {

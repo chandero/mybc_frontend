@@ -461,7 +461,7 @@ export class WebphoneSIPmlService {
     }
 
     public startRingTone(){
-        this.audioPlayer.play('ringback',1);
+        this.audioPlayer.play('ringing',1);
     }
 
     public startRingbackTone(){
@@ -477,7 +477,7 @@ export class WebphoneSIPmlService {
     }
 
     public stopRingTone(){
-        this.audioPlayer.stop('ringback');
+        this.audioPlayer.stop('ringing');
     }
 
     public stopRejected(){
@@ -528,7 +528,7 @@ export class WebphoneSIPmlService {
     }
 
     public emitProgressEvent(e:any) {
-        this.startRingbackTone();
+        this.startRingTone();
         this.progressCall$.emit(e);
     }
 
@@ -542,6 +542,7 @@ export class WebphoneSIPmlService {
     public emitAnswerEvent(e:any){
         console.log('Emit:-->Evento Answer...');
         this.stopRingTone();
+        this.stopRingbackTone();
         this.answerCall$.emit(e);
     }
 

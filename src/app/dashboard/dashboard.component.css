@@ -7,14 +7,19 @@ body {
     font-family: cylb !important;
 }
 
-@media screen and (max-width: 1024px){
-    .mdl-layout__drawer-button {
-        color: #fff !important;
-    }
+material-icons {
+    color: #fff !important;
+ }
 
-    .mdl-layout__header {
-        padding-left: 0px !important;
-    }
+@media screen and (max-width: 1024px){
+
+
+    .layout__header {
+        /* padding-left: 128px !important; */
+         margin-left: 0px !important;
+         width: calc(100% - 0px) !important;
+         color: #fff !important;
+     }
 
     .dashboard-footer {
         padding-left: 10px !important;
@@ -36,12 +41,15 @@ body {
         color: #fff !important;
     }
 
-    .mdl-layout__header {
-        padding-left: 0px !important;
+    .layout__header {
+       /* padding-left: 128px !important; */
+        margin-left: 134px !important;
+        width: calc(100% - 134px) !important;
+        color: #fff !important;
     }
 
     .dashboard-footer {
-        padding-left: 10px !important;
+        padding-left: 144px !important;
     }
 
     .mdl-layout__header-row {
@@ -49,7 +57,7 @@ body {
     }
 
     .mdl-layout__content {
-        margin-left: 0px;
+        margin-left: 134px;
         font-family: cylb !important;
     }
 }
@@ -113,7 +121,7 @@ body {
 }
 
 .phone-header {
-  padding-top: 30px;
+  padding-top: 0px;
 }
 
 .mybc-drawer {

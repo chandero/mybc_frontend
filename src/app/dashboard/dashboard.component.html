@@ -1,11 +1,8 @@
-<div class="mdl-layout mdl-js-layout">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
   <!-- Status -->
-  <header class="mdl-layout__header" style="background-color: #000; border-radius:0px 0px 20px 20px;">
+  <header class="mdl-layout__header layout__header" style="background-color: #000; border-radius:0px 0px 20px 20px;">
    <!--  <div class="mdl-layout-icon" role="button"><i class="material-icons" style="color: #fff;">menu</i></div> -->
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title"> 
-        <img src="/mybc/assets/images/logo.svg" class="menu-logo">
-      </span>
       <div class="in-column">
         <div class="in-row">
           <img class="status-user-img" src="/mybc/assets/images/user.svg"><span id="name" class="status-user-font">{{ _userFullname }}</span></div>
@@ -30,9 +27,9 @@
 
   <!-- Menu -->
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">
+    <header>
       <img src="/mybc/assets/images/logo.svg" class="menu-logo">
-    </span>
+    </header>
     <nav class="mdl-navigation">
       <a routerLink="/dashboard/webphone" class="mdl-navigation__link">
         <img src="/mybc/assets/images/webphone2.svg" class="menu-image-webphone" />

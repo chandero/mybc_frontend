@@ -5,19 +5,21 @@
 
     <div class="mdl-cell mdl-cell--4-phone mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
         <mdl-card class="webphone status">
-            <div class="statusText">{{ _statusText }}</div>
+            <div class="statusText" style="font-size:24px;">{{ _statusText }}</div>
             <div>
                 <mdl-textfield #numberToDial *ngIf="_ready" readonly [(ngModel)]="_dialnumber" name="dialernumber" (change)="dialerChange($event); false"
                     (keyup)="dialerChange($event); false" (keyup.enter)="dial(); false" class="mdl-texfield" autofocus="true" label="Número"
                     type="text" floating-label pattern="-?[\+0-9*#]*([\+0-9*#]+)?" error-msg="La entrada no es un número a marcar válido!"></mdl-textfield>
                 <mdl-icon *ngIf="_ready" style="font-size:24px;color:rgb(255,255,255);cursor:pointer;" (click)="clear()">backspace</mdl-icon>
             </div>
-            <div *ngIf="_incall">{{ _identifier }}</div>
-            <div *ngIf="_inprogress">{{ _identifier }}</div>
-            <div *ngIf="_incall">{{ _dialnumber }}</div>
-            <div *ngIf="_inprogress">{{ _dialnumber }}</div>
             <div>
-                <app-clock *ngIf="_incall || _inprogress" [enabled]="_startclock"></app-clock>
+            <div *ngIf="_incall" style="font-size:32px;">{{ _identifier }}</div>
+            <div *ngIf="_inprogress" style="font-size:32px;">{{ _identifier }}</div>
+            <div *ngIf="_incall" style="font-size:24px;">{{ _dialnumber }}</div>
+            <div *ngIf="_inprogress" style="font-size:24px;">{{ _dialnumber }}</div>
+            </div>
+            <div>
+                <app-clock style="color:#fff;" *ngIf="_incall || _inprogress" [enabled]="_startclock"></app-clock>
             </div>
         </mdl-card>
     </div>

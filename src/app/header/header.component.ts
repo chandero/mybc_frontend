@@ -27,6 +27,8 @@ export class HeaderComponent {
   private _dialnumber: string = "";
   private _identifier: string = "Desconocido";  
 
+  private _imageUrl:string = "";
+
   constructor(private webphoneService: WebphoneSIPmlService){
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
@@ -76,7 +78,7 @@ export class HeaderComponent {
     this._incall = true;
     this._inprogress = false;
     this._startclock = true;    
-
+    this._imageUrl = "/mybc/assets/images/nopicture.svg"
   }
 
   public confirmedHandler(e: any) {

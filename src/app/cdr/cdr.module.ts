@@ -9,6 +9,10 @@ import { MdlPopoverModule } from '@angular-mdl/popover';
 import { MdlDatePickerModule } from '@angular-mdl/datepicker';
 import { MdlDatePickerService } from '@angular-mdl/datepicker';
 
+import { MyDateRangePickerModule } from 'mydaterangepicker';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 import { AuthGuard } from '../_guards/auth.guard';
 
 import { CdrService } from '../services/cdr.service';
@@ -23,12 +27,14 @@ import { WindowRefService } from '../services/windowref.service';
     ],
     imports: [
         CommonModule,
-    	RouterModule,
+    	  RouterModule,
         FormsModule,
         MdlModule,
         MdlSelectModule,
         MdlPopoverModule,
-        MdlDatePickerModule
+        MdlDatePickerModule,
+        MyDateRangePickerModule,
+        NgxDatatableModule
     ],
     exports: [
         CdrComponent],

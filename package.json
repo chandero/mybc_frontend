@@ -25,9 +25,11 @@
     "@angular/router": "4.3.1",
     "@angular2-mdl-ext/popover": "^0.6.0",
     "@angular2-mdl-ext/select": "^0.10.3",
+    "@swimlane/ngx-datatable": "^10.4.0",
     "core-js": "^2.4.1",
-    "rxjs": "^5.2.0",
-    "typescript": "2.3.2",
+    "mydaterangepicker": "^4.1.11",
+    "rxjs": "^5.5.2",
+    "typescript": "^2.7.0-dev.20171118",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

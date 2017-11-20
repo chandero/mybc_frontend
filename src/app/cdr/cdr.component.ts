@@ -3,6 +3,7 @@ import { Cdr } from '../models/cdr.model';
 import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.service';
 
 import { MdlDatePickerService } from '@angular-mdl/datepicker';
+import {IMyDrpOptions} from 'mydaterangepicker';
 
 import { CdrService } from '../services/cdr.service';
 
@@ -11,14 +12,16 @@ import { CdrService } from '../services/cdr.service';
   templateUrl: './cdr.component.html',
   styleUrls: ['./cdr.component.css']
 })
-export class CdrComponent implements OnInit {  
+
+
+export class CdrComponent implements OnInit {
 
   private _cdrs : {};
   private _no_records = 'No hay registros';
   private _errorMessage: any;
 
-  private _iniDate: Date;
-  private _endDate : Date;
+  private _iniDate: Date = new Date();
+  private _endDate : Date = new Date();
 
   private _fecha_inicial: string;
   private _fecha_final: string;
@@ -41,18 +44,28 @@ export class CdrComponent implements OnInit {
   private _isMuted: boolean = false;
   private _isRemoteVideo:boolean = false;
 
-  private _callEvent:any;  
+  private _callEvent:any;
 
   private _statusText: string = "Disponible";
 
   private _dialnumber: string = "";
-  private _identifier: string = "Desconocido"; 
+  private _identifier: string = "Desconocido";
   //
 
   private _startDate : any;
   private _endedDate: any;
 
-  constructor(private webphoneService: WebphoneSIPmlService,private cdrService:CdrService, private datePicker: MdlDatePickerService) { 
+  _myDateRangePickerOptions: IMyDrpOptions = {
+    // other options...
+    dateFormat: 'yyyy-mm-dd',
+  };
+
+  private _dateRangemodel: any;
+
+  private _dataRows: any;
+
+
+  constructor(private webphoneService: WebphoneSIPmlService,private cdrService:CdrService, private datePicker: MdlDatePickerService) {
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
     webphoneService.endedCall$.subscribe(e => this.endedHandler(e));
@@ -63,11 +76,13 @@ export class CdrComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
     this._iniDate = new Date();
     this._endDate = new Date();
+    console.log('Date year:'+ this._iniDate.getFullYear());
 
+    this._dateRangemodel = {beginDate: {year: this._iniDate.getFullYear(), month: this._iniDate.getMonth(), day: this._iniDate.getDate()},
+    endDate: {year: this._endDate.getFullYear(), month: this._endDate.getMonth(), day: this._endDate.getDate()}};
+    console.log("rango de fechas:" + this._dateRangemodel);
     this.getCdrData();
   }
 
@@ -94,7 +109,7 @@ export class CdrComponent implements OnInit {
       this._startDate = selectedDate ?selectedDate : null;
     });
   }
-  
+
 
   onChangeIniDate(event){
     this._iniDate = new Date(event);
@@ -106,24 +121,24 @@ export class CdrComponent implements OnInit {
     this._endDate = new Date(event);
     this.getCdrData();
   }
-  
+
   private dial(e:string, i:number){
     this._currentCdr = this._cdrs[i];
     this._currentCdr.incall = true;
     this._inCall = true;
     this._notInCall = false;
-    this.webphoneService.dial(e);  
+    this.webphoneService.dial(e);
   }
 
   private hangup(){
     this._currentCdr.incall = false;
     this._inCall = false;
-    this._notInCall = true;    
+    this._notInCall = true;
     this.webphoneService.hangup();
-  }  
+  }
 
   // Event Handler
-  
+
   public progressHandler(e: any) {
     console.log('webphone: Progress event ');
     this._statusText = 'Llamando';
@@ -145,7 +160,7 @@ export class CdrComponent implements OnInit {
     this._ringing = false;
     this._incall = true;
     this._inprogress = false;
-    this._startclock = true;    
+    this._startclock = true;
 
   }
 
@@ -184,7 +199,7 @@ export class CdrComponent implements OnInit {
     this._inprogress = false;
 
     this._startclock = false;
-    
+
   }
 
   public succeededHandler(e: any) {
@@ -217,9 +232,9 @@ export class CdrComponent implements OnInit {
     this._inprogress = false;
 
     this._startclock = false;
-    this._callEvent = e;  
+    this._callEvent = e;
 
-    
+
 
   }
 
@@ -230,6 +245,6 @@ export class CdrComponent implements OnInit {
   private onTransferDialogHide(){
 
   }
-  
+
 
 }

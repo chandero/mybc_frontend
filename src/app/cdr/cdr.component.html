@@ -27,20 +27,8 @@
                         </div>
                     </th>
                     <th colspan="2" class="header-callerdate">
-                        <div>
-                            <div>
-                                <button
-                                    mdl-button
-                                    (click)="pickADate($event)"
-                                    mdl-button-type="icon"
-                                    mdl-ripple>
-                                    <mdl-icon>event</mdl-icon>
-                                </button>
-                            <span>{{ _iniDate | date: 'MM/dd/yyyy' }}</span>
-                            </div>
-                            <input class="form-control" id="_iniDate" name="_iniDate" [ngModel]="_iniDate | date: 'MM/dd/yyyy'" (ngModelChange)="onChangeIniDate($event)"  label="Desde" type="text" >
-                            <input class="form-control" id="_endDate" name="_endDate" [ngModel]="_endDate | date: 'MM/dd/yyyy'" (ngModelChange)="onChangeEndDate($event)" label="Hasta" type="text" useValueAsDate>
-                        </div>
+                              <my-date-range-picker name="mydaterange" [options]="_myDateRangePickerOptions"
+                              [(ngModel)]="_dateRangemodel" required></my-date-range-picker>
                     </th>
                 </tr>
             </thead>
@@ -82,8 +70,8 @@
                         <button mdl-button  mdl-button-type="icon" (click)="dial(cdr.dst, i)">
                                <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
                             </button>
-                        </div>   
-                     </div>                                            
+                        </div>
+                     </div>
                     </td>
                 </tr>
             </tbody>

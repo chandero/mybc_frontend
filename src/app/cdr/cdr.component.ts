@@ -3,7 +3,7 @@ import { Cdr } from '../models/cdr.model';
 import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.service';
 
 import { MdlDatePickerService } from '@angular-mdl/datepicker';
-import {IMyDrpOptions} from 'mydaterangepicker';
+import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 
 import { CdrService } from '../services/cdr.service';
 
@@ -111,14 +111,15 @@ export class CdrComponent implements OnInit {
   }
 
 
-  onChangeIniDate(event){
-    this._iniDate = new Date(event);
-    console.log('cambia fecha:'+event);
-    this.getCdrData();
-  }
-
-  onChangeEniDate(event){
-    this._endDate = new Date(event);
+  onDateRangeChanged(event: IMyDateRangeModel) {
+    // event properties are: event.beginDate, event.endDate, event.formatted,
+    // event.beginEpoc and event.endEpoc
+    this._iniDate.setFullYear(event.beginDate.year);
+    this._iniDate.setMonth(event.beginDate.month);
+    this._iniDate.setDate(event.beginDate.day);
+    this._endDate.setFullYear(event.endDate.year);
+    this._endDate.setMonth(event.endDate.month);
+    this._endDate.setDate(event.endDate.day);
     this.getCdrData();
   }
 

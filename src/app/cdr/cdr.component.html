@@ -28,7 +28,7 @@
                     </th>
                     <th colspan="2" class="header-callerdate">
                               <my-date-range-picker name="mydaterange" [options]="_myDateRangePickerOptions"
-                              [(ngModel)]="_dateRangemodel" required></my-date-range-picker>
+                              [(ngModel)]="_dateRangemodel" (dateRangeChanged)="onDateRangeChanged($event)" required></my-date-range-picker>
                     </th>
                 </tr>
             </thead>

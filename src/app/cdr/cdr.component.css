@@ -1,6 +1,47 @@
 @font-face {
     font-family: cylb;
-    src: url('/assets/fonts/c&lb.ttf');
+    src: url('/assets/fonts/generica_bold.otf');
+    /* src: url('/assets/fonts/c&lb.ttf'); */
+}
+
+@font-face {
+    font-family: cylb;
+    src: url('/assets/fonts/generica.otf');
+    /* src: url('/assets/fonts/c&lb.ttf'); */
+}
+
+
+.no-cdr-container {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.no-cdr-content {
+    width: 500px;
+}
+.no-cdr-item-1 {
+    /* float: left; */
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    /* style="text-align: center; font-size: 25px;" */
+   /* margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0; */
+}
+.no-cdr-item-2 {
+    /* float: left; */
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    /*
+    display: inline-block;
+    margin-left: 100px; */
+}
+
+.no-cdr-font {
+    font-family: cylb;
+    font-size: 40px;
 }
 
 .line {

@@ -39,7 +39,11 @@
                         </div>
                     </td>
                 </tr>
-                <tr *ngIf="_cdrs?.length < 1" ><td colspan=5>{{  _no_records }}</td></tr>
+                <tr *ngIf="_cdrs?.length < 1" >
+                    <td colspan=5>
+                        <div class="no-cdr-container"><div><div class="no-cdr-item-1"><div class="no-cdr-font">0</div><div class="no-cdr-font">Llamadas</div></div><div class="no-cdr-item-2"><img style="width:256px; height:256px;" src="/mybc/assets/images/cdrbiggray.svg"></div></div></div>
+                    </td>
+                </tr>
                 <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
                     <td class="item-icon">
                         <img src="/mybc/assets/images/contactheader.svg">

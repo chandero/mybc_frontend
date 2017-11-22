@@ -26,6 +26,7 @@
     "@angular2-mdl-ext/popover": "^0.6.0",
     "@angular2-mdl-ext/select": "^0.10.3",
     "@swimlane/ngx-datatable": "^10.4.0",
+    "angular2-datatable": "^0.6.0",
     "core-js": "^2.4.1",
     "jasmine-spec-reporter": "^3.2.0",
     "karma-chrome-launcher": "^2.0.0",

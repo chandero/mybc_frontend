@@ -1,6 +1,11 @@
 @font-face {
+    font-family: cyl;
+    src: url('/assets/fonts/generica.otf');
+}
+
+@font-face {
     font-family: cylb;
-    src: url('/assets/fonts/c&lb.ttf');
+    src: url('/assets/fonts/generica_bold.otf');
 }
 
 .line {

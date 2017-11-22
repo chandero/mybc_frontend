@@ -1,10 +1,15 @@
 @font-face {
+    font-family: cyl;
+    src: url('/assets/fonts/generica.otf');
+}
+
+@font-face {
     font-family: cylb;
-    src: url('/assets/fonts/c&lb.ttf');
+    src: url('/assets/fonts/generica_bold.otf');
 }
 
 body {
-    font-family: cylb !important;
+    font-family: cyl !important;
 }
 
 material-icons {
@@ -32,7 +37,7 @@ material-icons {
 
     .mdl-layout__content {
         margin-left: 0px;
-        font-family: cylb !important;
+        font-family: cyl !important;
     }
 }
 
@@ -58,7 +63,7 @@ material-icons {
 
     .mdl-layout__content {
         margin-left: 134px;
-        font-family: cylb !important;
+        font-family: cyl !important;
     }
 }
 
@@ -80,11 +85,12 @@ material-icons {
 .status-date-img{
     width: 16px;
     height: 16px;
+    padding-right: 5px;
 }
 
 .status-user-font {
-    font-family: cylb;
-    font-size: 14px;
+    font-family: cyl;
+    font-size: 24px;
     margin-left: 10px;
     color: #fff;
 }
@@ -95,16 +101,16 @@ material-icons {
 }
 
 .status-phone-font {
-    font-family: cylb;
-    font-size: 14px;
+    font-family: cyl;
+    font-size: 24px;
     margin-left: 10px;
     color: #fff;
 }
 
 .status-time-font {
     float: right;
-    font-family: cylb;
-    font-size: 14px;
+    font-family: cyl;
+    font-size: 24px;
     color: #fff;
 }
 
@@ -141,7 +147,7 @@ material-icons {
 }
 
 .mdl-layout__drawer {
-    font-family: cylb;
+    font-family: cyl;
     width: 128px;
     height: 100%;
     background: #000;
@@ -151,7 +157,6 @@ material-icons {
 .mdl-navigation__link {
     height: 72px;
     padding: 0px 0px !important;
-    /*margin: 0 auto !important; */
 }
 
 .mdl-navigation__link:hover {
@@ -167,8 +172,6 @@ material-icons {
 }
 
 .menu-logo {
-     /*width: 76.65px;
-    height: 47.25px; */
     width: 96px;
     height: 96px;
 }
@@ -184,7 +187,7 @@ material-icons {
 }
 
 .menu-title-webphone {
-    font-size: 16px;
+    font-size: 20px;
     color: #fff;
 }
 
@@ -195,7 +198,7 @@ material-icons {
 }
 
 .menu-title-llamadas {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 
 }
@@ -207,7 +210,7 @@ material-icons {
 }
 
 .menu-title-contactos {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 
 }
@@ -219,7 +222,7 @@ material-icons {
 }
 
 .menu-title-conferencia {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 
 }
@@ -231,7 +234,7 @@ material-icons {
 }
 
 .menu-title-voicemail {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 
 }
@@ -243,7 +246,7 @@ material-icons {
 }
 
 .menu-title-followme {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 
 }
@@ -255,7 +258,7 @@ material-icons {
 }
 
 .menu-title-setup {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
 }
 

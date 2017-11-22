@@ -10,7 +10,7 @@
       </colgroup>
       <thead>
         <tr>
-          <th colspan="2">
+          <th colspan="2" width="50%">
             <div class="header-name">
               <div>
                 <mdl-textfield type="text" icon="search"></mdl-textfield>
@@ -21,30 +21,30 @@
               </div>
             </div>
           </th>
-          <th>
+          <th width="20%">
             <div class="header-phone">
               <img src="/mybc/assets/images/phonenumber.svg">
             </div>
           </th>
-          <th class="header-actions">
+          <th width="20%" class="header-actions">
             <div>
               <span></span>
             </div>
           </th>
-          <th class="header-delete">
+          <th width="10%" class="header-delete">
             <div>
-              <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button>
+            <!--  <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button> -->
             </div>
           </th>
         </tr>
+        <tr>
+            <td colspan="5">
+              <div class="line">
+              </div>
+            </td>
+          </tr>        
       </thead>
       <tbody>
-        <tr>
-          <td colspan="5">
-            <div class="line">
-            </div>
-          </td>
-        </tr>
         <tr *ngFor="let contact of _contacts" class="item">
           <td class="item-icon">
             <mdl-icon svgSrc="/mybc/assets/images/contactheader.svg" class="md-16"></mdl-icon>
@@ -58,7 +58,7 @@
             <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><mdl-icon style="font-size:24px;color:rgb(91,90,80)">create</mdl-icon></button> -->
           </td>
           <td class="item-icon">
-            <mdl-checkbox></mdl-checkbox>
+            <!-- <mdl-checkbox></mdl-checkbox> -->
           </td>
         </tr>
       </tbody>
@@ -71,6 +71,6 @@
     </table>
   </mdl-card>
   <mdl-card class="card-right">
-    <button mdl-button mdl-button-type="icon"><mdl-icon>settings</mdl-icon></button>
+   <!-- <button mdl-button mdl-button-type="icon"><mdl-icon>settings</mdl-icon></button> -->
   </mdl-card>
 </mdl-card>

@@ -12,6 +12,8 @@ import { MdlDatePickerService } from '@angular-mdl/datepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+import {DataTableModule} from "angular2-datatable";
+
 
 import { AuthGuard } from '../_guards/auth.guard';
 
@@ -34,7 +36,8 @@ import { WindowRefService } from '../services/windowref.service';
         MdlPopoverModule,
         MdlDatePickerModule,
         MyDateRangePickerModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        DataTableModule
     ],
     exports: [
         CdrComponent],

@@ -11,37 +11,46 @@
             <thead>
                 <tr>
                     <th colspan="2">
-                        <div class="header-name">
-                            <div>
-                                <mdl-textfield type="text" icon="search"></mdl-textfield>
+                            <div class="header-name">
+                                <div>
+                                    <mdl-textfield type="text" icon="search"></mdl-textfield>
+                                </div>
+                                <div style="display:block; margin: auto;">
+                                    <img src="/mybc/assets/images/contactheader.svg">
+                                </div>
                             </div>
-                            <div style="display:block; margin: auto;">
-                                <img src="/mybc/assets/images/contactheader.svg">
-                                <!-- <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;">add</mdl-icon></button> -->
-                            </div>
-                        </div>
                     </th>
                     <th>
-                        <div class="item-disposicion">
-                            <img src="/mybc/assets/images/phone1.svg">
-                        </div>
+                            <div class="item-disposicion">
+                                <img src="/mybc/assets/images/phone1.svg">
+                            </div>
                     </th>
                     <th colspan="2" class="header-callerdate">
-                              <my-date-range-picker name="mydaterange" [options]="_myDateRangePickerOptions"
-                              [(ngModel)]="_dateRangemodel" (dateRangeChanged)="onDateRangeChanged($event)" required></my-date-range-picker>
+                            <my-date-range-picker name="mydaterange" [options]="_myDateRangePickerOptions" [(ngModel)]="_dateRangemodel" (dateRangeChanged)="onDateRangeChanged($event)"
+                                required></my-date-range-picker>
                     </th>
                 </tr>
+                <tr>
+                        <td colspan="5">
+                            <div class="line">
+                            </div>
+                        </td>
+                    </tr>                
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="5">
-                        <div class="line">
-                        </div>
-                    </td>
-                </tr>
-                <tr *ngIf="_cdrs?.length < 1" >
+                <tr *ngIf="_cdrs?.length < 1">
                     <td colspan=5>
-                        <div class="no-cdr-container"><div><div class="no-cdr-item-1"><div class="no-cdr-font">0</div><div class="no-cdr-font">Llamadas</div></div><div class="no-cdr-item-2"><img style="width:256px; height:256px;" src="/mybc/assets/images/cdrbiggray.svg"></div></div></div>
+                        <div class="no-cdr-container">
+                            <div style="width: 50%;">
+                                <div class="no-cdr-item-1">
+                                    <div class="no-cdr-font">0</div>
+                                    <div class="no-cdr-font">Llamadas</div>
+                                </div>
+                                <div class="no-cdr-item-2">
+                                    <img style="width:256px; height:256px;" src="/mybc/assets/images/cdrbiggray.svg">
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
@@ -55,27 +64,28 @@
                     <td class="item-icon">
                         <img *ngIf="cdr.disposition == 'NO ANSWER'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
                         <img *ngIf="cdr.disposition == 'FAILED'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
-                        <img *ngIf="cdr.disposition == 'ANSWERED' && cdr.src == _extension"  src="/mybc/assets/images/outcall.png" class="gridimg">
+                        <img *ngIf="cdr.disposition == 'ANSWERED' && cdr.src == _extension" src="/mybc/assets/images/outcall.png" class="gridimg">
+                        <img *ngIf="cdr.disposition == 'ANSWERED' && cdr.dst == _extension" src="/mybc/assets/images/incomingicocall.svg" class="gridimg">
                     </td>
                     <td class="item-callerdate">{{ cdr.calldate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
                     <td class="item-icon">
-                      <div *ngIf="cdr.incall">
-                        <button mdl-button  mdl-button-type="icon" (click)="hangup()">
-                               <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
-                            </button>
-                     </div>
-                      <div *ngIf="_notInCall && !_ringing">
-                        <div *ngIf="cdr.src != _extension">
-                        <button mdl-button  mdl-button-type="icon" (click)="dial(cdr.src, i)">
-                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                        <div *ngIf="cdr.incall">
+                            <button mdl-button mdl-button-type="icon" (click)="hangup()">
+                                <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
                             </button>
                         </div>
-                        <div *ngIf="cdr.src == _extension">
-                        <button mdl-button  mdl-button-type="icon" (click)="dial(cdr.dst, i)">
-                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
-                            </button>
+                        <div *ngIf="_notInCall && !_ringing">
+                            <div *ngIf="cdr.src != _extension">
+                                <button mdl-button mdl-button-type="icon" (click)="dial(cdr.src, i)">
+                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                                </button>
+                            </div>
+                            <div *ngIf="cdr.src == _extension">
+                                <button mdl-button mdl-button-type="icon" (click)="dial(cdr.dst, i)">
+                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                                </button>
+                            </div>
                         </div>
-                     </div>
                     </td>
                 </tr>
             </tbody>

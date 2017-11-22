@@ -64,6 +64,12 @@ export class CdrComponent implements OnInit {
 
   private _dataRows: any;
 
+  public data: any[];
+  public filterQuery = "";
+  public rowsOnPage = 25;
+  public sortBy = "date";
+  public sortOrder = "desc";
+
 
   constructor(private webphoneService: WebphoneSIPmlService,private cdrService:CdrService, private datePicker: MdlDatePickerService) {
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
@@ -80,8 +86,8 @@ export class CdrComponent implements OnInit {
     this._endDate = new Date();
     console.log('Date year:'+ this._iniDate.getFullYear());
 
-    this._dateRangemodel = {beginDate: {year: this._iniDate.getFullYear(), month: this._iniDate.getMonth(), day: this._iniDate.getDate()},
-    endDate: {year: this._endDate.getFullYear(), month: this._endDate.getMonth(), day: this._endDate.getDate()}};
+    this._dateRangemodel = {beginDate: {year: this._iniDate.getFullYear(), month: this._iniDate.getMonth()-1, day: this._iniDate.getDate()},
+    endDate: {year: this._endDate.getFullYear(), month: this._endDate.getMonth()-1, day: this._endDate.getDate()}};
     console.log("rango de fechas:" + this._dateRangemodel);
     this.getCdrData();
   }
@@ -115,10 +121,10 @@ export class CdrComponent implements OnInit {
     // event properties are: event.beginDate, event.endDate, event.formatted,
     // event.beginEpoc and event.endEpoc
     this._iniDate.setFullYear(event.beginDate.year);
-    this._iniDate.setMonth(event.beginDate.month);
+    this._iniDate.setMonth(event.beginDate.month-1);
     this._iniDate.setDate(event.beginDate.day);
     this._endDate.setFullYear(event.endDate.year);
-    this._endDate.setMonth(event.endDate.month);
+    this._endDate.setMonth(event.endDate.month-1);
     this._endDate.setDate(event.endDate.day);
     this.getCdrData();
   }

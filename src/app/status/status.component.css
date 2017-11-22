@@ -1,7 +1,13 @@
 @font-face {
-    font-family: cylb;
-    src: url('/assets/fonts/c&lb.ttf');
+    font-family: cyl;
+    src: url('/assets/fonts/generica.otf');
 }
+
+@font-face {
+    font-family: cylb;
+    src: url('/assets/fonts/generica_bold.otf');
+}
+
 .md-toolbar{
     background-color: #000;
     border-bottom-left-radius: 10px;

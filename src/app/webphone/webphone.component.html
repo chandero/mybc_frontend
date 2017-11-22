@@ -13,10 +13,10 @@
                 <mdl-icon *ngIf="_ready" style="font-size:24px;color:rgb(255,255,255);cursor:pointer;" (click)="clear()">backspace</mdl-icon>
             </div>
             <div>
-            <div *ngIf="_incall" style="font-size:32px;">{{ _identifier }}</div>
-            <div *ngIf="_inprogress" style="font-size:32px;">{{ _identifier }}</div>
-            <div *ngIf="_incall" style="font-size:24px;">{{ _dialnumber }}</div>
-            <div *ngIf="_inprogress" style="font-size:24px;">{{ _dialnumber }}</div>
+            <div *ngIf="_incall" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>
+            <div *ngIf="_inprogress" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>
+            <div *ngIf="_incall" style="font-size:24px;padding: 10px;">{{ _dialnumber }}</div>
+            <div *ngIf="_inprogress" style="font-size:24px;padding: 10px;">{{ _dialnumber }}</div>
             </div>
             <div>
                 <app-clock style="color:#fff;" *ngIf="_incall || _inprogress" [enabled]="_startclock"></app-clock>
@@ -136,53 +136,52 @@
                     </table>
                 </td>
         </table>
-        <dialog-outlet></dialog-outlet>
-        <mdl-dialog #_transferDialog [mdl-dialog-config]="{
-              clickOutsideToClose: true,
-              styles:{'width': '300px'},
-              isModal:true,
-              openFrom: transferButton,
-              enterTransitionDuration: 400,
-              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
-            <h3 class="mdl-dialog__title">Transferir a:</h3>
-            <div class="mdl-dialog__content">
-                <mdl-textfield type="text" label="Número" [(ngModel)]="_dialnumber" floating-label autofocus></mdl-textfield>
-            </div>
-            <div class="mdl-dialog__actions">
-                <button mdl-button (click)="_transferDialog.close(); transfer();" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Transferir</button>
-                <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cancelar</button>
-            </div>
-        </mdl-dialog>
-        <mdl-dialog #_localVideo [mdl-dialog-config]="{
-              clickOutsideToClose: true,
-              styles:{'width': '300px'},
-              isModal:true,
-              openFrom: transferButton,
-              enterTransitionDuration: 400,
-              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
-            <div class="mdl-dialog__content">
-                <video class="local-video"></video>
-            </div>
-            <div class="mdl-dialog__actions">
-                <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cerrar</button>
-            </div>
-        </mdl-dialog>
-        <mdl-dialog #_remoteVideo [mdl-dialog-config]="{
-              clickOutsideToClose: true,
-              styles:{'width': '300px'},
-              isModal:false,
-              openFrom: transferButton,
-              enterTransitionDuration: 400,
-              leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
-            <div class="mdl-dialog__content">
-                <video id="remoteVideo" class="remote-video"></video>
-            </div>
-            <div class="mdl-dialog__actions">
-                <button mdl-button (click)="_remoteVideo.close()" mdl-ripple>Cerrar</button>
-            </div>
-        </mdl-dialog>
     </div>
-
     <div class="mdl-cell mdl-cell--hide-phone mdl-cell--2-col-tablet mdl-cell--4-col-desktop">
     </div>
 </div>
+<dialog-outlet></dialog-outlet>
+<mdl-dialog #_transferDialog [mdl-dialog-config]="{
+      clickOutsideToClose: true,
+      styles:{'width': '300px'},
+      isModal:true,
+      openFrom: transferButton,
+      enterTransitionDuration: 400,
+      leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+    <h3 class="mdl-dialog__title">Transferir a:</h3>
+    <div class="mdl-dialog__content">
+        <mdl-textfield type="text" label="Número" [(ngModel)]="_dialnumber" floating-label autofocus></mdl-textfield>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button (click)="_transferDialog.close(); transfer();" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Transferir</button>
+        <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cancelar</button>
+    </div>
+</mdl-dialog>
+<mdl-dialog #_localVideo [mdl-dialog-config]="{
+      clickOutsideToClose: true,
+      styles:{'width': '300px'},
+      isModal:true,
+      openFrom: transferButton,
+      enterTransitionDuration: 400,
+      leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+    <div class="mdl-dialog__content">
+        <video class="local-video"></video>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button (click)="_transferDialog.close()" mdl-ripple>Cerrar</button>
+    </div>
+</mdl-dialog>
+<mdl-dialog #_remoteVideo [mdl-dialog-config]="{
+      clickOutsideToClose: true,
+      styles:{'width': '300px'},
+      isModal:false,
+      openFrom: transferButton,
+      enterTransitionDuration: 400,
+      leaveTransitionDuration: 400}" (show)="onTransferDialogShow(dialogRef)" (hide)="onTransferDialogHide()">
+    <div class="mdl-dialog__content">
+        <video id="remoteVideo" class="remote-video"></video>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button (click)="_remoteVideo.close()" mdl-ripple>Cerrar</button>
+    </div>
+</mdl-dialog>

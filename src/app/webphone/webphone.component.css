@@ -28,6 +28,7 @@
     font-family: cyl;
     font-size: 30px;
     color: #FFF;
+    padding: 5px;
 }
 
 .dialer.mdl-textfield.mdl-textfield__label {
@@ -89,14 +90,14 @@
 }
 
 .dialer.number {
-    font-family: cylb;
+    font-family: cyl;
     font-size: 36px;
     text-align: center;
     vertical-align: middle;
 }
 
 .dialer.caption {
-    font-family: cylb;
+    font-family: cyl;
     font-size: 10px;
 }
 

@@ -1,6 +1,6 @@
-<div *ngIf="_ringing || _incall || _inprogress || true">
+<div *ngIf="_ringing || _incall || _inprogress">
     <div style="display: flex; margin-top: 0px; margin-bottom: 0px;">
-        <div style="display: inline-flex;">
+        <div style="display: inline-flex; padding: 1em;">
            <div style="display: block;">
             <div class="statusText">{{ _statusText }}</div>
             <div class="statusText" *ngIf="_incall">{{ _identifier }}</div>
@@ -12,14 +12,14 @@
             </div>
            </div>
         </div>
-        <div *ngIf="_incall || true" class="header-img" style="display: inline-flex;" >
-            <img src="{{ _imageUrl }}" style="width: 48px; height: 48px;">
+        <div *ngIf="_incall" class="header-img" style="display: inline-flex; max-height: 60px;" >
+            <img src="{{ _imageUrl }}" style="width: 60px; height: 60px;">
         </div>
-        <div class="in-row" style="display: inline-flex;">
-            <button *ngIf="_ringing || true" mdl-button mdl-button-type="icon" (click)="answer()">
+        <div class="in-row" style="display: inline-flex; padding: 1em;">
+            <button *ngIf="_ringing" mdl-button mdl-button-type="icon" (click)="answer()">
                 <mdl-icon style="font-size:16px;background-color:rgb(255,255,255);color:rgb(63,165,59);">phone</mdl-icon>
             </button>
-            <button *ngIf="true || _ringing || _inprogress || _incall" mdl-button mdl-button-type="icon" (click)="hangup()">
+            <button *ngIf="_ringing || _inprogress || _incall" mdl-button mdl-button-type="icon" (click)="hangup()">
                 <mdl-icon style="font-size:16px;background-color:rgb(255,77,0);color:rgb(255,255,255);">call_end</mdl-icon>
             </button>
         </div>

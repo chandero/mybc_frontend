@@ -15,7 +15,6 @@ import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +27,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     LoginModule,
     routing_app
   ],
-  providers: [AuthGuard, WindowRefService, WebphoneSIPmlService, GoogleService ],
+  providers: [AuthGuard, WindowRefService, WebphoneSIPmlService, GoogleService],
   bootstrap: [AppComponent]
 })
 

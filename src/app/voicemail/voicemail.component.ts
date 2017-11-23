@@ -11,6 +11,7 @@ export class VoicemailComponent implements OnInit {
   private _voicemails : {};
   private _no_records = 'No hay registros';
   private _errorMessage: any;
+  private _voicemailstatus: boolean = false;
 
   private _extension: string = localStorage.getItem('mybcexten');
 
@@ -20,6 +21,16 @@ export class VoicemailComponent implements OnInit {
   ngOnInit() {
     console.log('iniciando voicemail');
     this.getVoicemailData();
+    //this.getVoicemailStatus();
+  }
+
+  getVoicemailStatus(){
+    this.voicemailService.getVoicemailStatus(this._extension).subscribe(status => this._voicemailstatus),
+                  error => this._errorMessage = <any> error;
+  }
+
+  setVoicemailStatus(status: boolean){
+
   }
 
   getVoicemailData(){

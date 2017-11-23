@@ -7,6 +7,7 @@ import { FormsModule }   from '@angular/forms';
 import { MdlModule } from '@angular-mdl/core';
 import { MdlSelectModule } from '@angular-mdl/select';
 import { MdlPopoverModule } from '@angular-mdl/popover';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
 
 import { MenuModule } from '../menu/index';
 import { StatusModule } from '../status/index';
@@ -52,7 +53,8 @@ import { WindowRefService } from '../services/windowref.service';
         FormsModule,
         MdlModule,
         MdlSelectModule,
-        MdlPopoverModule,        
+        MdlPopoverModule,
+        MyDateRangePickerModule,
 
         MenuModule,
         StatusModule,
@@ -65,7 +67,7 @@ import { WindowRefService } from '../services/windowref.service';
     ],
     exports: [
         DashboardComponent,
-        HeaderComponent, 
+        HeaderComponent,
         WizardComponent,
         WebphoneComponent,
         FollowmeComponent,

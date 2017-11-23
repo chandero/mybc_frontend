@@ -8,6 +8,319 @@
     src: url('/assets/fonts/generica_bold.otf');
 }
 
+.no-cdr-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.no-cdr-content {
+  width: 500px;
+}
+.no-cdr-item-1 {
+  /* float: left; */
+  width: 300px;
+  height: 200px;
+  display: inline-block;
+  line-height: 40px;
+}
+.no-cdr-item-2 {
+  /* float: left; */
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  /*
+  display: inline-block;
+  margin-left: 100px; */
+}
+
+.no-cdr-font {
+  font-family: cyl;
+  font-size: 40px;
+  height: 64px;
+  text-align: center;
+}
+
+.line {
+  display: block;
+  height: 5px;
+  background: rgb(158,158,158);
+}
+
 .card {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  padding: 0px;
+}
+
+.card-left {
+  padding: 10px;
+  width: 95%;
+  box-shadow: none;
+}
+
+.card-right {
+  width: 5%;
+  border-style: solid;
+  border-color: rgb(158,158,158);
+  border-width: 1px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  padding: 10px;
+  box-shadow: none;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.mdl-textfield {
+  padding: 10px;
+}
+
+.mdl-textfield__expandable {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+  display:block;
+}
+thead {
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+}
+tbody {
+  height: 550px;
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+}
+
+input {
+  font-family: cyl;
+  font-size: 14px;
+}
+
+mfbootstrappaginator > mfpaginator > ul {
+  display: inline-block;
+}
+
+mfbootstrappaginator > mfpaginator > ul a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.cdrHeader {
+  max-height: 32px;
+  padding-bottom: 0px !important;
+}
+
+.cdrContent {
+  background-color: white;
+}
+
+.md-avatar-icon {
+  margin-right:18px;
+  width: 16px;
+}
+
+.item {
+  min-height: 20px;
+  max-height: 25px;
+}
+
+.item td {
+  height: 24px;
+}
+
+.item-icon {
+  min-width: 60px;
+  width: 10%;
+  height: 100%;
+  text-align: center;
+}
+
+.item-icon md-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.item-callerid {
+  font-family: cyl;
+  min-width: 150px;
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.item-callerdate {
+  font-family: cyl;
+  min-width: 90px;
+  width: 20%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.item-callerdate  div {
+  width: 100%;
+  height: 32px;
+  border: 1px solid;
+  border-color: rgb(176,203,31);
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: left;
+  font-family: cyl;
+  font-size: 14px;
+}
+
+
+.header-name {
+  min-width: 150px;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  vertical-align: center;
+}
+
+.header-name div {
+  width: 50%;
+}
+
+.header-name .mdl-textfield {
+  border: 1px solid;
+  border-color: rgb(176,203,31);
+  border-radius: 15px;
+}
+
+.header-name md-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.header-callerdate {
+  font-family: cyl;
+  min-width: 90px;
+  width: 20%;
+}
+
+.header-callerdate img {
+  width: 32px;
+  height: 32px;
+}
+
+.header-callerdate  div {
+  width: 100%;
+  height: 60px;
+  border: 1px solid;
+  border-color: rgb(176,203,31);
+  border-radius: 15px;
+  text-align: left;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#iniDate {
+  position: relative;
+  float: left;
+  width: 45%;
+}
+
+#endDate {
+  position: relative;
+  float: right;
+  width: 45%;
+}
+
+.header-callerdate div vaadin-date-picker input#input {
+  font-size: 12px;
+}
+
+.text-voicemail {
+  font-family: cyl;
+  font-size: 20px;
+}
+
+.item-buscar {
+  min-width: 68px;
+  width: 10%;
+  text-align: center;
+
+}
+
+.item-buscar div {
+  width: 54px;
+  height: 32px;
+  border: 1px solid;
+  border-color: rgb(176,203,31);
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: left;
+}
+
+.item-buscar div md-icon {
+  width: 24px;
+  height: 24px;
+
+}
+
+.item-identificador {
+  min-width: 150px;
+  width: 50%;
+  text-align: center;
+}
+
+.item-identificador md-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.item-disposicion {
+  min-width: 68px;
+  width: 10%;
+  display: flex;
+}
+
+.item-filtro {
+  min-width: 160px;
+  width: 30%;
+  text-align: center;
+}
+
+.item-filtro-borde {
+  border: 1px solid;
+  border-color: rgb(176,203,31);
+  border-radius: 15px;
+}
+
+.item-filtro-borde input {
+  font-family: cyl;
+  font-size: 14px;
+  width: 40%;
+
+}
+
+
+.scrollable {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.scrollable item > tr {
+  min-height: 20px;
+  height: 25px;
+}
+
+md-nav-list md-list-item .md-list-item, md-nav-list a[md-list-item] .md-list-item {
+  min-height: 20px;
+  height: 25px;
 }

@@ -1,45 +1,98 @@
 <mdl-card class="card">
         <table>
-            <colgroup>
-                <col class="item-icon">
-                <col class="item-callerid">
-                <col class="item-icon">
-                <col class="item-callerdate">
-                <col class="item-icon">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th colspan="2">
-                    </th>
-                    <th>
-                    </th>
-                    <th colspan="2" class="header-callerdate">
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+          <colgroup>
+            <col width="40%">
+            <col width="25%">
+            <col width="15%">
+            <col width="15%">
+            <col width="5%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th width="40%">
+                        <div class="header-name">
+                            <div style="display:block; margin: auto;">
+                                <img src="/mybc/assets/images/contactwithnumber.svg">
+                            </div>
+                        </div>
+                </th>
+                <th width="25%">
+                        <div class="header-callerdate">
+                            <img src="/mybc/assets/images/calendargray.svg">
+                        </div>
+                </th>
+                <th width="15%">
+                  <div class="item-disposicion">
+                    <img src="/mybc/assets/images/play.svg">
+                </div>
+                </th>
+                <th width="15%">
+                  <div class="item-disposicion">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                      <span class="mdl-switch__label">Estado</span>
+                      <input type="checkbox" id="switch-2" class="mdl-switch__input" [(ngModel)]="_voicemailstatus">
+                    </label>
+                </div>
+                </th>
+                <th width="5%" class="header-delete">
+                    <div>
+                    <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button>
+                    </div>
+                  </th>
+            </tr>
+            <tr>
                     <td colspan="5">
                         <div class="line">
                         </div>
                     </td>
                 </tr>
-                <tr *ngIf="_voicemails?.length < 1" ><td colspan=5>{{  _no_records }}</td></tr>
+        </thead>
+            <tbody>
+                <div *ngIf="_voicemails?.length < 1">
+                    <!-- <td colspan=5> -->
+                        <div class="no-cdr-container">
+                            <div style="width: 50%;">
+                                <div class="no-cdr-item-1">
+                                    <div class="no-cdr-font">0</div>
+                                    <div class="no-cdr-font">no tiene mensajes de voz</div>
+                                </div>
+                                <div class="no-cdr-item-2">
+                                    <img style="width:256px; height:256px;" src="/mybc/assets/images/novoicemail.svg">
+                                </div>
+                            </div>
+                        </div>
+                   <!-- </td> -->
+                </div>
                 <tr *ngFor="let voicemail of _voicemails" class="item">
-                    <td class="item-icon">
-                        <img src="/mybc/assets/images/contactheader.svg">
+                    <td width="40%">
+                      <div style="display: flex;">
+                        <img width="10%" src="/mybc/assets/images/contactheader.svg">
+                        <div class="text-voicemail" width="90%">{{ voicemail.voic_origin }}</div>
+                      </div>
                     </td>
-                    <td class="item-callerid">
-                        <div>{{ voicemail.voic_origin }}</div>
-                    </td>
-                    <td class="item-icon">
-                    </td>
-                    <td class="item-callerdate"><div>{{ voicemail.voic_date }}</div></td>
-                    <td class="item-player"><audio [attr.src]="voicemail.voic_file" audioplayer controls></audio>
-                    <td class="item-icon">
-                        <button mdl-button  mdl-button-type="icon" (click)="downloadFile(voicemail.voic_file)">
-                               <mdl-icon style="font-size:24px;color:rgb(63,165,59);">file_download</mdl-icon>
+                    <td width="25%"><div class="text-voicemail">{{ voicemail.voic_date }}</div></td>
+                    <td width="15%"><audio class="text-voicemail" [attr.src]="voicemail.voic_file" audioplayer controls></audio>
+                    <td width="15%">
+                        <div *ngIf="incall">
+                            <button mdl-button mdl-button-type="icon" (click)="hangup()">
+                                <mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon>
                             </button>
+                        </div>
+                        <div *ngIf="_notInCall && !_ringing">
+                            <div *ngIf="cdr.src != _extension">
+                                <button mdl-button mdl-button-type="icon" (click)="dial(cdr.src, i)">
+                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                                </button>
+                            </div>
+                            <div>
+                                <button mdl-button mdl-button-type="icon" (click)="dial(cdr.dst, i)">
+                                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                    <td width="5%">
+                          <mdl-checkbox></mdl-checkbox>
                     </td>
                 </tr>
             </tbody>

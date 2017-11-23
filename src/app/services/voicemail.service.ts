@@ -11,24 +11,37 @@ export class VoicemailService {
 
     private _baseUrl: string;
     private _window: Window;
+    private _status: boolean;
 
-    constructor(windowRef: WindowRefService, private _http: Http) { 
+    constructor(windowRef: WindowRefService, private _http: Http) {
         this._window = windowRef.nativeWindow;
     }
 
-    getVoicemailData(extension: String): Observable<Voicemail[]> {
+    public getVoicemailStatus(extension:string): Observable<boolean> {
+      this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
+      const get = this._baseUrl + '/voicemail/getstatus/' + extension;
+      console.log('procesando peticion estado de voicemail');
+      return this._http.get(get).map(((res: Response) => <boolean>res.json()))
+          .map((status: boolean)  => {
+              this._status = status;
+              return this._status;
+          })
+          .catch(this.handleError);
+    }
+
+    public getVoicemailData(extension: String): Observable<Voicemail[]> {
         this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
         var get = this._baseUrl + '/voicemail/getlist/'+extension;
         console.log('procesando peticion voicemail:'+get);
         return this._http.get(get).map(((res: Response) => <Voicemail[]>res.json()))
-            .map((voicemails : Array<any>) => {
-                let result:Array<Voicemail> = [];
+            .map((voicemails: Array<any>) => {
+                const result: Array<Voicemail> = [];
                 if (voicemails){
                     voicemails.forEach((voicemail) => {
-                        console.log("Voicemail: "+ voicemail.voic_file );
-                        let v:Voicemail = new Voicemail();
+                        console.log('Voicemail: ' + voicemail.voic_file );
+                        const v: Voicemail = new Voicemail();
                         v.voic_id = voicemail.voic_id;
-                        v.voic_file = this._baseUrl + "/voicemail/get/"+extension+"/"+voicemail.voic_file; //asignar servlet 
+                        v.voic_file = this._baseUrl + '/voicemail/get/' + extension + '/' + voicemail.voic_file; //asignar servlet
                         v.voic_origin = voicemail.voic_origin;
                         v.voic_date = voicemail.voic_date;
                         v.voic_duration = voicemail.voic_duration;

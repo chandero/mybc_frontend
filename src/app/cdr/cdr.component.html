@@ -35,11 +35,11 @@
                             <div class="line">
                             </div>
                         </td>
-                    </tr>                
+                    </tr>
             </thead>
             <tbody>
-                <tr *ngIf="_cdrs?.length < 1">
-                    <td colspan=5>
+                <div *ngIf="_cdrs?.length < 1">
+                    <!-- <td colspan=5> -->
                         <div class="no-cdr-container">
                             <div style="width: 50%;">
                                 <div class="no-cdr-item-1">
@@ -51,8 +51,8 @@
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                   <!-- </td> -->
+                </div>
                 <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
                     <td class="item-icon">
                         <img src="/mybc/assets/images/contactheader.svg">

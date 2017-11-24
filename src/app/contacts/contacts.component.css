@@ -80,7 +80,7 @@ tbody {
 
 .md-avatar-icon {
     margin-right:18px;
-    width: 16px; 
+    width: 16px;
 }
 
 .item {
@@ -207,7 +207,7 @@ tbody {
     border-radius: 15px;
 }
 
-.header-name md-icon {
+.header-name img {
     width: 40px;
     height: 40px;
 }
@@ -218,9 +218,9 @@ tbody {
     text-align: center;
 }
 
-.header-phone md-icon {
-    width: 48px;
-    height: 48px;
+.header-phone img {
+    width: 40px;
+    height: 40px;
 }
 
 .header-actions {
@@ -256,5 +256,5 @@ tbody {
 
 md-nav-list md-list-item .md-list-item, md-nav-list a[md-list-item] .md-list-item {
     min-height: 20px;
-    height: 25px;   
+    height: 25px;
 }

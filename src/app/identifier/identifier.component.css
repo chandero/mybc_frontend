@@ -9,7 +9,7 @@
 }
 
 .mybc-font {
-    font-family: cylb;
+    font-family: cyl;
     font-size: 20px;
     color: white;
 }
@@ -61,7 +61,7 @@
 
 .mybc-lang-container {
     text-align: center;
-    padding-top: 5px; 
+    padding-top: 5px;
 }
 
 #mybc-lang-select {

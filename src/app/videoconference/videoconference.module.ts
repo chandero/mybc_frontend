@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MdlModule } from '@angular-mdl/core';
 import { MdlSelectModule } from '@angular-mdl/select';
 import { MdlPopoverModule } from '@angular-mdl/popover';
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { AuthGuard } from '../_guards/auth.guard';
 
@@ -20,7 +21,8 @@ import { WindowRefService } from '../services/windowref.service';
     RouterModule,
     MdlModule,
     MdlSelectModule,
-    MdlPopoverModule,    
+    MdlPopoverModule,
+    ClipboardModule
   ],
   declarations: [VideoconferenceComponent],
   providers: [WindowRefService, AuthGuard]

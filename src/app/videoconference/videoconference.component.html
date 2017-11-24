@@ -1,32 +1,37 @@
 <mdl-card class="card">
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--8-col-desktop">
-            <span>Comparta la siguiente ruta: {{ _urlRoom }}</span>
-        </div>
-        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--2-col-desktop">
-            <button mdl-button mdl-button-type="icon" (click)="start()" title="Iniciar Video Conferencia">
-                    <mdl-icon style="font-size:24px;color:rgb(63,165,59);">queue_play_next</mdl-icon>
-                </button>
-        </div>
-        <div class="mdl-cell mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-cell--2-col-desktop">
-            <button mdl-button mdl-button-type="icon" (click)="dispose()" title="Finalizar Video Conferencia">
-                        <mdl-icon style="font-size:24px;color:rgb(63,165,59);">remove_from_queue</mdl-icon>
-                    </button>
-        </div>
+  <div class="mdl-grid">
+    <div *ngIf="!_inMeet" class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="start()" title="Iniciar Reunión"  style="height: 43px;">
+          <img width="42px" src="/mybc/assets/images/newmeet.svg">
+          <span style="text-transform: capitalize; font-family: cyl; font-size: 18px;">Iniciar Reunión</span>
+        </button>
     </div>
-    <div style="margin-top:40px;margin-bottom:40px;margin-left:auto;margin-right:auto;text-align:center;" *ngIf="_urlRoom != ''">
-
+    <div *ngIf="_inMeet" class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+      <img width="36px" src="/mybc/assets/images/meetaddress.svg">
+      <span style="font-family: cyl; font-size: 18px;">Dirección de la Reunión: {{ _urlRoom }}</span>
+      <button title="Copiar al Portapapeles" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="min-width:32px !important; width: 32px; height:  32px !important; margin-left: 32px;" ngxClipboard [cbContent]="_urlRoom" >
+        <img style="min-width:32px !important; width: 32px; height:  32px !important;" src="/mybc/assets/images/copylink.svg">
+      </button>
       <!-- Twitter -->
-      <a [href]="_twitterUrl" title="Compartir en Twitter" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--twitter"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
-       <!-- Facebook -->
-      <a [href]="_facebookUrl" title="Compartir en Facebook" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--facebook"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
+      <a [href]="_twitterUrl" title="Compartir en Twitter" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--twitter" style="min-width:32px !important; width: 32px; height:  32px !important;">
+        <i class="fa fa-twitter fa-fw"></i></a>
+      <!-- Facebook -->
+      <a [href]="_facebookUrl" title="Compartir en Facebook" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--facebook" style="min-width:32px !important; width: 32px; height:  32px !important;">
+        <i class="fa fa-facebook fa-fw"></i></a>
       <!-- Google+ -->
-      <a [href]="_googleUrl" title="Compartir en Google+" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--googleplus"><i class="fa fa-google-plus fa-fw"></i> Google+</a>
+      <a [href]="_googleUrl" title="Compartir en Google+" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--googleplus" style="min-width:32px !important; width: 32px; height:  32px !important;">
+        <i class="fa fa-google-plus fa-fw"></i></a>
       <!-- StumbleUpon -->
       <!-- <a href="http://www.stumbleupon.com/submit?url=" title="Share on StumbleUpon" target="_blank" data-placement="top" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--stumbleupon"><i class="fa fa-stumbleupon fa-fw"></i> Stumbleupon</a> -->
       <!-- LinkedIn -->
-      <a [href]="_linkedUrl" title="Compartir en LinkedIn" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--linkedin"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a>
-
-      </div>
+      <a [href]="_linkedUrl" title="Compartir en LinkedIn" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--linkedin" style="min-width:32px !important; width: 32px; height:  32px !important;">
+         <i class="fa fa-linkedin fa-fw"></i>
+      </a>
+      <button class="mdl-button mdl-js-button" (click)="dispose()" title="Finalizar Reunión" >
+          <img style="width: 32px; height: 32px;" src="/mybc/assets/images/endmeet.svg">
+          <span style="text-transform: capitalize;">Finalizar Reunión</span>
+        </button>
+    </div>
+  </div>
 </mdl-card>
 <div #videoconference style="width:800px; height: 600px;"></div>

@@ -275,3 +275,7 @@ height: 24px;
 height: 720px;
 width: 100%;
 }
+
+.mdl-grid {
+  margin: 0;
+}

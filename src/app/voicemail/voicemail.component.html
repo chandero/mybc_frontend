@@ -9,14 +9,14 @@
         </colgroup>
         <thead>
             <tr>
-                <th width="40%">
+                <th width="35%">
                         <div class="header-name">
                             <div style="display:block; margin: auto;">
                                 <img src="/mybc/assets/images/contactwithnumber.svg">
                             </div>
                         </div>
                 </th>
-                <th width="25%">
+                <th width="35%">
                         <div class="header-callerdate">
                             <img src="/mybc/assets/images/calendargray.svg">
                         </div>
@@ -30,13 +30,13 @@
                   <div class="item-disposicion">
                     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
                       <span class="mdl-switch__label">Estado</span>
-                      <input type="checkbox" id="switch-2" class="mdl-switch__input" [(ngModel)]="_voicemailstatus">
+                      <input type="checkbox" id="switch-2" class="mdl-switch__input" [(ngModel)]="_voicemailstatus" (change)="setStatusEvent($event)">
                     </label>
                 </div>
                 </th>
                 <th width="5%" class="header-delete">
                     <div>
-                    <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button>
+                   <!-- <button mdl-button mdl-button-type="icon"><mdl-icon style="font-size:28px;color: red;">delete_sweep</mdl-icon></button> -->
                     </div>
                   </th>
             </tr>
@@ -92,7 +92,7 @@
                         </div>
                     </td>
                     <td width="5%">
-                          <mdl-checkbox></mdl-checkbox>
+                         <!-- <mdl-checkbox></mdl-checkbox> -->
                     </td>
                 </tr>
             </tbody>

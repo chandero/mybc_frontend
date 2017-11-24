@@ -20,17 +20,35 @@ export class VoicemailComponent implements OnInit {
 
   ngOnInit() {
     console.log('iniciando voicemail');
+    this.getVoicemailStatus();
     this.getVoicemailData();
-    //this.getVoicemailStatus();
   }
 
   getVoicemailStatus(){
-    this.voicemailService.getVoicemailStatus(this._extension).subscribe(status => this._voicemailstatus),
+    this.voicemailService.getVoicemailStatus(this._extension).subscribe(status => this.setStatus(status)),
                   error => this._errorMessage = <any> error;
   }
 
-  setVoicemailStatus(status: boolean){
+  private setStatus(status: boolean){
+    console.log("Estado recibido:"+status);
+    this._voicemailstatus = status;
+  }
 
+  private setStatusEvent(event){
+    this.setVoicemailStatus(this._voicemailstatus);
+  }
+
+  setVoicemailStatus(status: boolean){
+    console.log('estableciendo voicemail a:'+status + ', estado actual:'+this._voicemailstatus);
+    var _result: boolean;
+    this.voicemailService.setVoicemailStatus(this._extension, status).subscribe(result => this.validarStatus(result)),
+                   error => this._errorMessage = <any> error;
+  }
+
+  validarStatus(result: boolean){
+    if (result){
+      this.getVoicemailStatus();
+    }
   }
 
   getVoicemailData(){

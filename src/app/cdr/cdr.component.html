@@ -10,7 +10,7 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th colspan="2">
+                    <th width="35%">
                             <div class="header-name">
                                 <div>
                                     <mdl-textfield type="text" icon="search"></mdl-textfield>
@@ -20,9 +20,9 @@
                                 </div>
                             </div>
                     </th>
-                    <th>
-                            <div class="item-disposicion">
-                                <img src="/mybc/assets/images/phone1.svg">
+                    <th width="35%">
+                            <div class="header-callerdate">
+                                <img src="/mybc/assets/images/phone.svg">
                             </div>
                     </th>
                     <th colspan="2" class="header-callerdate">
@@ -54,14 +54,15 @@
                    <!-- </td> -->
                 </div>
                 <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
-                    <td class="item-icon">
+                    <td class="item-icon" width="35%">
                         <img src="/mybc/assets/images/contactheader.svg">
+                        <span>{{ cdr.clid }}</span>
                     </td>
-                    <td class="item-callerid">
+                    <td class="item-callerid" width="35%">
                         <div *ngIf="cdr.src != _extension">{{ cdr.src }}</div>
                         <div *ngIf="cdr.src == _extension">{{ cdr.dst }}</div>
                     </td>
-                    <td class="item-icon">
+                    <td class="item-disposicion">
                         <img *ngIf="cdr.disposition == 'NO ANSWER'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
                         <img *ngIf="cdr.disposition == 'FAILED'" src="/mybc/assets/images/missedcall.svg" class="gridimg">
                         <img *ngIf="cdr.disposition == 'ANSWERED' && cdr.src == _extension" src="/mybc/assets/images/outcall.png" class="gridimg">

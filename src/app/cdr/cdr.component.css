@@ -90,9 +90,6 @@
     padding: 5px;
 }
 
-vaadin-date-picker {
-    width: 100%;
-}
 table {
     width: 100%;
     display:block;
@@ -112,17 +109,6 @@ tbody {
 input {
     font-family: cyl;
     font-size: 14px;
-}
-
-mfbootstrappaginator > mfpaginator > ul {
-    display: inline-block;
-}
-
-mfbootstrappaginator > mfpaginator > ul a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
 }
 
 .cdrHeader {
@@ -150,9 +136,8 @@ mfbootstrappaginator > mfpaginator > ul a {
 
 .item-icon {
     min-width: 60px;
-    width: 10%;
-    height: 100%;
-    text-align: center;
+    width: 35%;
+    font-size: 20px;
 }
 
 .item-icon md-icon {
@@ -163,7 +148,7 @@ mfbootstrappaginator > mfpaginator > ul a {
 .item-callerid {
     font-family: cyl;
     min-width: 150px;
-    width: 50%;
+    width: 35%;
     text-align: center;
     font-size: 20px;
 }
@@ -208,7 +193,7 @@ mfbootstrappaginator > mfpaginator > ul a {
     border-radius: 15px;
 }
 
-.header-name md-icon {
+.header-name div img {
     width: 40px;
     height: 40px;
 }
@@ -217,6 +202,7 @@ mfbootstrappaginator > mfpaginator > ul a {
     font-family: cyl;
     min-width: 90px;
     width: 20%;
+    margin: 0 auto;
 }
 
 .header-callerdate  div {
@@ -228,6 +214,11 @@ mfbootstrappaginator > mfpaginator > ul a {
     text-align: left;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+.header-callerdate  img {
+    width: 40px;
+    height: 40px;
 }
 
 #iniDate {
@@ -249,7 +240,7 @@ mfbootstrappaginator > mfpaginator > ul a {
 
 .item-buscar {
     min-width: 68px;
-    width: 10%;
+    width: 35%;
     text-align: center;
 
 }
@@ -273,7 +264,7 @@ mfbootstrappaginator > mfpaginator > ul a {
 
 .item-identificador {
     min-width: 150px;
-    width: 50%;
+    width: 35%;
     text-align: center;
 }
 
@@ -284,9 +275,15 @@ mfbootstrappaginator > mfpaginator > ul a {
 
 .item-disposicion {
     min-width: 68px;
-    width: 10%;
+    width: 5%;
     text-align: center;
 }
+
+.item-disposicion img {
+    width: 40px;
+    height: 40px;
+}
+
 
 .item-filtro {
     min-width: 160px;

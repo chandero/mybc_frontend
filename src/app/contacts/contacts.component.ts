@@ -13,6 +13,7 @@ import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.ser
 export class ContactsComponent implements OnInit {
 
   private _contacts = [];
+  private _filter = new Contact();
   private _errorMessage: any;
   private _no_records = 'No hay registros';
 

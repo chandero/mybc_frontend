@@ -17,14 +17,25 @@ export class VoicemailService {
         this._window = windowRef.nativeWindow;
     }
 
+    public setVoicemailStatus(extension:string, status:boolean){
+        this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
+        const get = this._baseUrl + '/voicemail/setstatus/' + extension + '/' + status;
+        console.log('procesando peticion establecer estado de voicemail');
+        return this._http.get(get).map(((res: Response) => <boolean>res.json()))
+            .map((status: boolean ) => {
+                return status;
+            })
+            .catch(this.handleError);
+    }
+
     public getVoicemailStatus(extension:string): Observable<boolean> {
       this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
       const get = this._baseUrl + '/voicemail/getstatus/' + extension;
       console.log('procesando peticion estado de voicemail');
       return this._http.get(get).map(((res: Response) => <boolean>res.json()))
           .map((status: boolean)  => {
-              this._status = status;
-              return this._status;
+              console.log("Estado recibido: "+ status);
+              return status;
           })
           .catch(this.handleError);
     }

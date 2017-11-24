@@ -28,7 +28,7 @@ export class GoogleService {
     ); */
 
 
-
+/*
     gapi.load("auth2", () => {
       this._oauth2Client = gapi.auth2.init({
         client_id:
@@ -43,6 +43,7 @@ export class GoogleService {
         this.onFailure
       );
     });
+    */
   }
 
   private onSingIn(){

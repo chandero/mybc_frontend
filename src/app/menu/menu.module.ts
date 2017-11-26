@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { MdlModule } from '@angular-mdl/core';
-import { MdlSelectModule } from '@angular-mdl/select';
-import { MdlPopoverModule } from '@angular-mdl/popover';
 
 import { MenuComponent } from './menu.component';
 
@@ -15,9 +13,7 @@ import { MenuComponent } from './menu.component';
     imports: [
         CommonModule,
     	RouterModule,
-        MdlModule,
-        MdlSelectModule,
-        MdlPopoverModule,        
+        MdlModule        
     ],
     exports: [
         MenuComponent]

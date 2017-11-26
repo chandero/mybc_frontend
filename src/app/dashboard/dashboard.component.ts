@@ -2,7 +2,7 @@ import { Component, OnInit, Attribute } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdlDialogService, MdlSnackbarService, IOpenCloseRect, MdlDialogComponent } from '@angular-mdl/core';
 import { WebphoneSIPmlService } from '../services/webphone_sipml.service';
-import { GoogleService } from '../services/google.service';
+import { GoogleService } from '../services/gapi-authorization.service';
 
 @Component({
   selector: 'app-dashboard',

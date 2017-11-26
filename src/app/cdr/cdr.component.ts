@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Cdr } from '../models/cdr.model';
 import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.service';
 
-import { MdlDatePickerService } from '@angular-mdl/datepicker';
 import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 
 import { CdrService } from '../services/cdr.service';
@@ -17,6 +16,7 @@ import { CdrService } from '../services/cdr.service';
 export class CdrComponent implements OnInit {
 
   private _cdrs : {};
+  private _filter = new Cdr();
   private _no_records = 'No hay registros';
   private _errorMessage: any;
 
@@ -71,7 +71,7 @@ export class CdrComponent implements OnInit {
   public sortOrder = "desc";
 
 
-  constructor(private webphoneService: WebphoneSIPmlService,private cdrService:CdrService, private datePicker: MdlDatePickerService) {
+  constructor(private webphoneService: WebphoneSIPmlService,private cdrService:CdrService) {
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
     webphoneService.endedCall$.subscribe(e => this.endedHandler(e));
@@ -109,13 +109,6 @@ export class CdrComponent implements OnInit {
                    .subscribe(cdrs => this._cdrs = cdrs),
                    error => this._errorMessage = <any> error;
   }
-
-  public pickADate($event: MouseEvent) {
-    this.datePicker.selectDate(this._startDate, {openFrom: $event}).subscribe( (selectedDate: Date) => {
-      this._startDate = selectedDate ?selectedDate : null;
-    });
-  }
-
 
   onDateRangeChanged(event: IMyDateRangeModel) {
     // event properties are: event.beginDate, event.endDate, event.formatted,

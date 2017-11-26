@@ -4,9 +4,12 @@ import { RouterModule } from '@angular/router';
 
 import { FormsModule }   from '@angular/forms';
 
+import { StoreModule } from '@ngrx/store';
+import { GoogleReducers } from '../store/reducer';
+import { GapiLoader } from '../services/gapi-loader.service';
+import { UserProfileActions } from '../store/user-profile/user-profile.actions';
+
 import { MdlModule } from '@angular-mdl/core';
-import { MdlSelectModule } from '@angular-mdl/select';
-import { MdlPopoverModule } from '@angular-mdl/popover';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 
 import { MenuModule } from '../menu/index';
@@ -36,6 +39,8 @@ import { VideoconferenceService } from '../services/videoconference.service';
 import { VoicemailService } from '../services/voicemail.service';
 import { WindowRefService } from '../services/windowref.service';
 
+import { GoogleService } from '../services/gapi-authorization.service';
+
 @NgModule({
     declarations: [
         DashboardComponent,
@@ -52,8 +57,6 @@ import { WindowRefService } from '../services/windowref.service';
         RouterModule,
         FormsModule,
         MdlModule,
-        MdlSelectModule,
-        MdlPopoverModule,
         MyDateRangePickerModule,
 
         MenuModule,
@@ -63,7 +66,8 @@ import { WindowRefService } from '../services/windowref.service';
         ContactModule,
         ConferencesModule,
         ConferenceModule,
-        VideoconferenceModule
+        VideoconferenceModule,
+        StoreModule.provideStore(GoogleReducers)
     ],
     exports: [
         DashboardComponent,
@@ -74,7 +78,17 @@ import { WindowRefService } from '../services/windowref.service';
         VoicemailComponent,
         SettingsComponent,
         ClockComponent],
-    providers: [WindowRefService, AuthGuard, WebphoneSIPmlService, AudioPlayerService, VideoconferenceService, VoicemailService]
+    providers: [
+        WindowRefService, 
+        AuthGuard, 
+        WebphoneSIPmlService, 
+        AudioPlayerService, 
+        VideoconferenceService, 
+        VoicemailService, 
+        GoogleService,
+        GapiLoader,
+        UserProfileActions
+        ]
 })
 
 export class DashboardModule { }

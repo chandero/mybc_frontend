@@ -4,12 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { MdlModule } from '@angular-mdl/core';
-import { MdlSelectModule } from '@angular-mdl/select';
-import { MdlPopoverModule } from '@angular-mdl/popover';
-import { MdlDatePickerModule } from '@angular-mdl/datepicker';
-import { MdlDatePickerService } from '@angular-mdl/datepicker';
 
 import { MyDateRangePickerModule } from 'mydaterangepicker';
+
+import { CdrFilterPipe } from '../filters/cdr.pipe';
 
 import { AuthGuard } from '../_guards/auth.guard';
 
@@ -21,21 +19,19 @@ import { WindowRefService } from '../services/windowref.service';
 
 @NgModule({
     declarations: [
-        CdrComponent
+        CdrComponent,
+        CdrFilterPipe
     ],
     imports: [
         CommonModule,
     	  RouterModule,
         FormsModule,
         MdlModule,
-        MdlSelectModule,
-        MdlPopoverModule,
-        MdlDatePickerModule,
         MyDateRangePickerModule
     ],
     exports: [
         CdrComponent],
-    providers: [WindowRefService, CdrService, AuthGuard, MdlDatePickerService]
+    providers: [WindowRefService, CdrService, AuthGuard]
 })
 
 export class CdrModule {}

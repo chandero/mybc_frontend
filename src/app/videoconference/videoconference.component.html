@@ -8,11 +8,14 @@
     </div>
     <div *ngIf="_inMeet" class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
       <img width="36px" src="/mybc/assets/images/meetaddress.svg">
-      <span style="font-family: cyl; font-size: 18px;">Dirección de la Reunión: {{ _urlRoom }}</span>
-      <button title="Copiar al Portapapeles" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="min-width:32px !important; width: 32px; height:  32px !important; margin-left: 32px;" ngxClipboard [cbContent]="_urlRoom" >
+      <span style="font-family: cyl; font-size: 18px;">Dirección de la Reunión:  </span><span style="font-family: cyl; font-size: 18px;" id="url">{{ _urlRoom }}</span>
+      
+      <button data-clipboard-action="copy" data-clipboard-target="#url" title="Copiar al Portapapeles" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="min-width:32px !important; width: 32px; height:  32px !important; margin-left: 32px;" >
         <img style="min-width:32px !important; width: 32px; height:  32px !important;" src="/mybc/assets/images/copylink.svg">
       </button>
+      
       <!-- Twitter -->
+      <span style="margin-left: 32px;"></span>
       <a [href]="_twitterUrl" title="Compartir en Twitter" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--twitter" style="min-width:32px !important; width: 32px; height:  32px !important;">
         <i class="fa fa-twitter fa-fw"></i></a>
       <!-- Facebook -->

@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { MdlModule } from '@angular-mdl/core';
-import { MdlSelectModule } from '@angular-mdl/select';
-import { MdlPopoverModule } from '@angular-mdl/popover';
 
 //import { routing_login } from './login.routes';
 import { LoginComponent } from './login.component';
@@ -28,9 +26,7 @@ import { WindowRefService } from '../services/windowref.service';
         CommonModule,
     	RouterModule,
         FormsModule,
-        MdlModule,
-        MdlSelectModule,
-        MdlPopoverModule, 
+        MdlModule
         //routing_login,
     ],
     exports: [

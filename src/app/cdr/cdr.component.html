@@ -13,7 +13,7 @@
                     <th width="35%">
                             <div class="header-name">
                                 <div>
-                                    <mdl-textfield type="text" icon="search"></mdl-textfield>
+                                    <mdl-textfield type="text" icon="search" [(ngModel)]="_filter.clid" ></mdl-textfield>
                                 </div>
                                 <div style="display:block; margin: auto;">
                                     <img src="/mybc/assets/images/contactheader.svg">
@@ -53,7 +53,7 @@
                         </div>
                    <!-- </td> -->
                 </div>
-                <tr *ngFor="let cdr of _cdrs; let i = index" class="item">
+                <tr *ngFor="let cdr of _cdrs | cdrfilter:_filter; let i = index " class="item">
                     <td class="item-icon" width="35%">
                         <img src="/mybc/assets/images/contactheader.svg">
                         <span>{{ cdr.clid }}</span>
@@ -99,4 +99,3 @@
         </table>
     </mdl-card>
 </mdl-card>
-<dialog-outlet></dialog-outlet>

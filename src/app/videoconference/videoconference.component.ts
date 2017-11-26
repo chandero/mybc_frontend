@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewChecked, ViewChild, ContentChild, ElementRef, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ContentChild, ElementRef, AfterContentInit, AfterViewInit, ViewContainerRef } from '@angular/core';
 
 import { VideoconferenceService } from '../services/videoconference.service';
+
+declare var Clipboard: any;
 
 @Component({
   selector: 'app-videoconference',
@@ -8,7 +10,7 @@ import { VideoconferenceService } from '../services/videoconference.service';
   styleUrls: ['./videoconference.component.css']
 })
 
-export class VideoconferenceComponent implements OnInit {
+export class VideoconferenceComponent implements OnInit, AfterViewInit {
 
   @ViewChild('videoconference', { read: ElementRef }) videoconferenceEl: ElementRef;
 
@@ -19,11 +21,15 @@ export class VideoconferenceComponent implements OnInit {
   private _googleUrl = "https://plus.google.com/share?url=";
   private _linkedUrl = "https://www.linkedin.com/shareArticle?mini=true&url=";
   private _linkedUrlLast = "&title=&summary=&source=";
+  
+  private _clipboard:any;
+  
+  constructor(private _videoconferenceservice: VideoconferenceService){}
 
-  constructor(private _videoconferenceservice: VideoconferenceService) {
-
+  ngAfterViewInit() {
+    this._clipboard = new Clipboard('.mdl-button');
   }
-
+ 
   ngOnInit() {
   }
 
@@ -42,10 +48,5 @@ export class VideoconferenceComponent implements OnInit {
     this._urlRoom = '';
     this._inMeet = false;
   }
-
-  public copiarToClipboard(){
-
-  }
-
 
 }

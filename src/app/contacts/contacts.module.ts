@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 
 import { MdlModule } from '@angular-mdl/core';
-import { MdlSelectModule } from '@angular-mdl/select';
-import { MdlPopoverModule } from '@angular-mdl/popover';
 
 import { ContactsComponent } from './contacts.component';
 import { ContactFilterPipe } from '../filters/contact.pipe';
@@ -24,9 +22,7 @@ import { WindowRefService } from '../services/windowref.service';
         CommonModule,
         RouterModule,
         FormsModule,
-        MdlModule,
-        MdlSelectModule,
-        MdlPopoverModule,
+        MdlModule
     ],
     exports: [
         ContactsComponent],

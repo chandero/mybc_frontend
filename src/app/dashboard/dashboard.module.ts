@@ -4,11 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { FormsModule }   from '@angular/forms';
 
-import { StoreModule } from '@ngrx/store';
-import { GoogleReducers } from '../store/reducer';
-import { GapiLoader } from '../services/gapi-loader.service';
-import { UserProfileActions } from '../store/user-profile/user-profile.actions';
-
 import { MdlModule } from '@angular-mdl/core';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 
@@ -38,8 +33,8 @@ import { AudioPlayerService } from '../services/audioplayer.service';
 import { VideoconferenceService } from '../services/videoconference.service';
 import { VoicemailService } from '../services/voicemail.service';
 import { WindowRefService } from '../services/windowref.service';
+import { GoogleUserService } from '../services/googleUser.service';
 
-import { GoogleService } from '../services/gapi-authorization.service';
 
 @NgModule({
     declarations: [
@@ -66,8 +61,7 @@ import { GoogleService } from '../services/gapi-authorization.service';
         ContactModule,
         ConferencesModule,
         ConferenceModule,
-        VideoconferenceModule,
-        StoreModule.provideStore(GoogleReducers)
+        VideoconferenceModule
     ],
     exports: [
         DashboardComponent,
@@ -84,10 +78,8 @@ import { GoogleService } from '../services/gapi-authorization.service';
         WebphoneSIPmlService, 
         AudioPlayerService, 
         VideoconferenceService, 
-        VoicemailService, 
-        GoogleService,
-        GapiLoader,
-        UserProfileActions
+        VoicemailService,
+        GoogleUserService
         ]
 })
 

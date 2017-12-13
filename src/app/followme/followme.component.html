@@ -1,3 +1,123 @@
-<p>
-  followme works!
-</p>
+<mdl-card class="card">
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="mdl-cell mdl-cell--4-col"><img src="/mybc/assets/images/followme2.svg"></div>
+    <div class="mdl-cell mdl-cell--2-col">
+      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+        <span class="mdl-switch__label">Estado</span>
+        <input type="checkbox" id="switch-2" class="mdl-switch__input" [(ngModel)]="_followmestatus" (change)="setStatusEvent($event)">
+      </label>      
+    </div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+  </div>
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="mdl-cell mdl-cell--4-col"><span style="font-size:24px;">Sigueme</span></div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+  </div>  
+
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <span>Número</span>
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <span>Tiempo(seg)</span>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div>    
+  </div>
+
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"><span>1</span></div>
+    <div class="mdl-cell mdl-cell--2-col"><img class="extension" src="/mybc/assets/images/extavaliable.svg"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="extension1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="extension1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="tiempo1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="tiempo1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div>    
+  </div>  
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"><span>2</span></div>
+    <div class="mdl-cell mdl-cell--2-col"><img class="extension" src="/mybc/assets/images/extavaliable.svg"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="extension1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="extension1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="tiempo1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="tiempo1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div> 
+  </div>  
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"><span>3</span></div>
+    <div class="mdl-cell mdl-cell--2-col"><img class="extension" src="/mybc/assets/images/extavaliable.svg"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="extension1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="extension1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="tiempo1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="tiempo1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div> 
+  </div>  
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"><span>4</span></div>
+    <div class="mdl-cell mdl-cell--2-col"><img class="extension" src="/mybc/assets/images/extavaliable.svg"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="extension1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="extension1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="tiempo1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="tiempo1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div> 
+  </div>  
+  <div class="mdl-grid" style="padding: 0px !important;">
+    <div class="mdl-cell mdl-cell--1-col"><span>5</span></div>
+    <div class="mdl-cell mdl-cell--2-col"><img class="extension" src="/mybc/assets/images/extavaliable.svg"></div>
+    <div class="mdl-cell mdl-cell--1-col"></div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="extension1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="extension1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      <div class="mdl-textfield mdl-js-textfield" style="padding: 0px !important;">
+        <input class="mdl-textfield__input" type="text" id="tiempo1" on-keypress="validateKey($event)">
+        <label class="mdl-textfield__label" for="tiempo1"></label>
+      </div>      
+    </div>
+    <div class="mdl-cell mdl-cell--3-col"></div> 
+  </div>    
+</mdl-card>

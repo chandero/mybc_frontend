@@ -45,14 +45,14 @@
           </tr>        
       </thead>
       <tbody>
-        <tr *ngFor="let contact of _contacts | contactfilter:_filter" class="item">
+        <tr *ngFor="let contact of _contacts| contactfilter:_filter; let i = index " class="item">
           <td class="item-icon">
             <mdl-icon svgSrc="/mybc/assets/images/contactheader.svg" class="md-16"></mdl-icon>
           </td>
           <td class="item-callerid">{{ contact.cont_name }}</td>
           <td class="item-callerid">{{ contact.cont_number}}</td>
           <td class="item-actions">
-            <div *ngIf="_notInCall && !_ringing"> <button class="mdl-button mdl-js-button mdl-button--icon" (click)="dial(contact.cont_number)"><mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon></button> </div>
+            <div *ngIf="_notInCall && !_ringing"> <button (click)="_callDialog.show(contact.cont_number)" #callButton class="mdl-button mdl-js-button mdl-button--icon" ><mdl-icon style="font-size:24px;color:rgb(63,165,59);">phone</mdl-icon></button> </div>
             <div *ngIf="_inCall"> <button class="mdl-button mdl-js-button mdl-button--icon" (click)="hangup()"><mdl-icon style="font-size:24px;color:rgb(255,77,0);">call_end</mdl-icon></button> </div>
             <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><mdl-icon style="font-size:24px;color:rgb(227,30,36);">delete_sweep</mdl-icon></button> -->
             <!-- <button class="mdl-button mdl-js-button mdl-button--icon"><mdl-icon style="font-size:24px;color:rgb(91,90,80)">create</mdl-icon></button> -->
@@ -74,3 +74,19 @@
    <!-- <button mdl-button mdl-button-type="icon"><mdl-icon>settings</mdl-icon></button> -->
   </mdl-card>
 </mdl-card>
+<mdl-dialog #_callDialog [mdl-dialog-config]="{
+  clickOutsideToClose: true,
+  styles:{'width': '300px'},
+  isModal:true,
+  openFrom: callButton,
+  enterTransitionDuration: 400,
+  leaveTransitionDuration: 400}" (show)="onCallDialogShow(_dialnumber)">
+<h3 class="mdl-dialog__title">Llamar a:</h3>
+<div class="mdl-dialog__content">
+    <mdl-textfield type="text" label="Número" [(ngModel)]="_dialnumber" floating-label autofocus></mdl-textfield>
+</div>
+<div class="mdl-dialog__actions">
+    <button mdl-button (click)="_callDialog.close(); dial(_dialnumber);" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Llamar</button>
+    <button mdl-button (click)="_callDialog.close()" mdl-ripple>Cancelar</button>
+</div>
+</mdl-dialog>

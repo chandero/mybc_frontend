@@ -1,0 +1,21 @@
+@font-face {
+    font-family: cyl;
+    src: url('/assets/fonts/generica.otf');
+}
+
+@font-face {
+    font-family: cylb;
+    src: url('/assets/fonts/generica_bold.otf');
+}
+.card {
+    width: 90%;
+    font-family: cyl;
+}
+
+.mdl-grid {
+    width: 100%;
+}
+
+.extension {
+    width: 36px;
+}

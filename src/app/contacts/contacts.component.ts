@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Contact } from '../models/contact.model'; 
 import { Router } from '@angular/router';
 
+import { GoogleUserService } from '../services/googleUser.service';
 import { ContactService } from '../services/contact.service';
 import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.service';
+import { PeopleResource } from '../services/people.resouce';
+import { People } from '../services/people.resouce';
+import { MdlDialogReference } from '@angular-mdl/core';
 
 @Component({
   selector: 'app-contacts',
@@ -12,7 +16,7 @@ import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.ser
 })
 export class ContactsComponent implements OnInit {
 
-  private _contacts = [];
+  private _contacts: Contact[];
   private _filter = new Contact();
   private _errorMessage: any;
   private _no_records = 'No hay registros';
@@ -46,14 +50,14 @@ export class ContactsComponent implements OnInit {
   private _identifier: string = "Desconocido"; 
   //  
 
-  constructor(private webphoneService: WebphoneSIPmlService, private router: Router, private contactService: ContactService) { 
+  constructor(private webphoneService: WebphoneSIPmlService, private router: Router, private contactService: ContactService, private googleUserService: GoogleUserService, private peopleResource: PeopleResource) { 
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
     webphoneService.endedCall$.subscribe(e => this.endedHandler(e));
     webphoneService.failedCall$.subscribe(e => this.failedHandler(e));
     webphoneService.succeededCall$.subscribe(e => this.succeededHandler(e));
     webphoneService.incomingCall$.subscribe(e => this.incomingHandler(e));
-    webphoneService.answerCall$.subscribe( e => this.answerHandler(e));    
+    webphoneService.answerCall$.subscribe( e => this.answerHandler(e));  
   }
 
   ngOnInit() {
@@ -65,14 +69,37 @@ export class ContactsComponent implements OnInit {
     console.log('Pedir servicio contact list')
     this.contactService.getContactData().subscribe(contacts => this._contacts = contacts),
            error => this._errorMessage = <any> error;
+    this.contactService.getGoogleContactData().subscribe(contacts => this.loadgoogledata(contacts)),
+           error => this._errorMessage = <any> error;
+  }
+
+  loadgoogledata(data: People[]){
+    data.forEach((people) => {
+      let c = new Contact();
+      if (people.names != undefined && people.names.length > 0){
+        c.cont_name = people.names[0].displayName;
+      }
+      if (people.phoneNumbers != undefined && people.phoneNumbers.length > 0){
+        c.cont_number = people.phoneNumbers[0].value;
+      }
+      c.cont_incall = false;
+      this._contacts.push(c);
+    } );
   }
 
   newContact(){
     this.router.navigate(['/dashboard/contact']);
   }
 
+  private onCallDialogShow(dialogRef:MdlDialogReference){
+    console.log("dialogRef:"+dialogRef);
+  }
+
   private dial(e:string, i:number){
+    console.log("index: " + i);
+    console.log(this._contacts[i]);
     this._currentContact = this._contacts[i];
+    console.log(this._currentContact);
     this._currentContact.cont_incall = true;    
     this._inCall = true;
     this._notInCall = false;

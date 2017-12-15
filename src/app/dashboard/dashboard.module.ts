@@ -32,6 +32,7 @@ import { WebphoneSIPmlService} from '../services/webphone_sipml.service';
 import { AudioPlayerService } from '../services/audioplayer.service';
 import { VideoconferenceService } from '../services/videoconference.service';
 import { VoicemailService } from '../services/voicemail.service';
+import { FollowmeService } from '../services/followme.service';
 import { WindowRefService } from '../services/windowref.service';
 import { GoogleUserService } from '../services/googleUser.service';
 
@@ -79,6 +80,7 @@ import { GoogleUserService } from '../services/googleUser.service';
         AudioPlayerService, 
         VideoconferenceService, 
         VoicemailService,
+        FollowmeService,
         GoogleUserService
         ]
 })

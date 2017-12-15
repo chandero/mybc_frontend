@@ -17,10 +17,10 @@ export class FollowmeService {
         this._window = windowRef.nativeWindow;
     }
 
-    public setVoicemailStatus(extension:string, status:boolean){
+    public setSiguemeStatus(extension:string, status:boolean){
         this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
-        const get = this._baseUrl + '/voicemail/setstatus/' + extension + '/' + status;
-        console.log('procesando peticion establecer estado de voicemail');
+        const get = this._baseUrl + '/followme/setstatus/' + extension + '/' + status;
+        console.log('procesando peticion establecer estado de sigueme');
         return this._http.get(get).map(((res: Response) => <boolean>res.json()))
             .map((status: boolean ) => {
                 return status;
@@ -28,10 +28,10 @@ export class FollowmeService {
             .catch(this.handleError);
     }
 
-    public getVoicemailStatus(extension:string): Observable<boolean> {
+    public getSiguemeStatus(extension:string): Observable<boolean> {
       this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
-      const get = this._baseUrl + '/voicemail/getstatus/' + extension;
-      console.log('procesando peticion estado de voicemail');
+      const get = this._baseUrl + '/followme/getstatus/' + extension;
+      console.log('procesando peticion estado de followme');
       return this._http.get(get).map(((res: Response) => <boolean>res.json()))
           .map((status: boolean)  => {
               console.log("Estado recibido: "+ status);
@@ -40,28 +40,18 @@ export class FollowmeService {
           .catch(this.handleError);
     }
 
-    public getVoicemailData(extension: String): Observable<Voicemail[]> {
+    public getSiguemeData(extension: String): Observable<Followme> {
         this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
-        var get = this._baseUrl + '/voicemail/getlist/'+extension;
-        console.log('procesando peticion voicemail:'+get);
-        return this._http.get(get).map(((res: Response) => <Voicemail[]>res.json()))
-            .map((voicemails: Array<any>) => {
-                const result: Array<Voicemail> = [];
-                if (voicemails){
-                    voicemails.forEach((voicemail) => {
-                        console.log('Voicemail: ' + voicemail.voic_file );
-                        const v: Voicemail = new Voicemail();
-                        v.voic_id = voicemail.voic_id;
-                        v.voic_file = this._baseUrl + '/voicemail/get/' + extension + '/' + voicemail.voic_file; //asignar servlet
-                        v.voic_origin = voicemail.voic_origin;
-                        v.voic_date = voicemail.voic_date;
-                        v.voic_duration = voicemail.voic_duration;
-                        result.push(v);
-                    })
-                }
-                return result;
-            })
+        var get = this._baseUrl + '/followme/get/'+extension;
+        console.log('procesando peticion followme:'+get);
+        return this._http.get(get).map(((res: Response) => <Followme>res.json()))
             .catch(this.handleError);
+    }
+
+    public setSiguemeData(extension: string, followme: Followme){
+        this._baseUrl = `${this._window.location.protocol}//${this._window.location.hostname}:${this._window.location.port}/api`;
+        var post = this._baseUrl + '/followme/setdata';
+        return this._http.post(post, followme).map((res:Response) => <Boolean>res.json());
     }
 
     private handleError(error: Response | any) {
@@ -77,9 +67,5 @@ export class FollowmeService {
         console.log('Error:'+errMsg);
         console.error(errMsg);
         return Observable.throw(errMsg);
-    }
-
-    downloadFile(url:string){
-        this._window.open(url, "_blank");
     }
 }

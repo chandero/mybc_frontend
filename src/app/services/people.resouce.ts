@@ -17,7 +17,7 @@ export class PeopleResource {
     }
 
     public findAll(): Observable<PeopleListResponse> {
-        let url = `${this.ENDPOINT_URL}/me/connections?personFields=names%2CphoneNumbers`;
+        let url = `${this.ENDPOINT_URL}/me/connections?pageSize=2000&personFields=names%2CphoneNumbers`;
         return this.httpService.get(url, {headers: this.authHeader});
     }
 

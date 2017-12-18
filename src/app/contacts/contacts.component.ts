@@ -8,15 +8,16 @@ import { WebphoneSIPmlService, call_sipml } from '../services/webphone_sipml.ser
 import { PeopleResource } from '../services/people.resouce';
 import { People } from '../services/people.resouce';
 import { MdlDialogReference } from '@angular-mdl/core';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit, AfterViewInit {
 
-  private _contacts: Contact[];
+  private _contacts: Contact[] = new Array<Contact>();
   private _filter = new Contact();
   private _errorMessage: any;
   private _no_records = 'No hay registros';
@@ -60,8 +61,9 @@ export class ContactsComponent implements OnInit {
     webphoneService.answerCall$.subscribe( e => this.answerHandler(e));  
   }
 
-  ngOnInit() {
-    console.log('Iniciando contact list')
+  ngOnInit(){}
+
+  ngAfterViewInit() {
     this.getContactList();
   }
 
@@ -87,6 +89,11 @@ export class ContactsComponent implements OnInit {
     } );
   }
 
+  setNumber(c: Contact){
+    this._currentContact = c;
+    this._dialnumber = c.cont_number;
+  }
+
   newContact(){
     this.router.navigate(['/dashboard/contact']);
   }
@@ -95,15 +102,12 @@ export class ContactsComponent implements OnInit {
     console.log("dialogRef:"+dialogRef);
   }
 
-  private dial(e:string, i:number){
-    console.log("index: " + i);
-    console.log(this._contacts[i]);
-    this._currentContact = this._contacts[i];
+  private dial(){
     console.log(this._currentContact);
     this._currentContact.cont_incall = true;    
     this._inCall = true;
     this._notInCall = false;
-    this.webphoneService.dial(e);  
+    this.webphoneService.dial(this._dialnumber);  
   }
 
   private hangup(){

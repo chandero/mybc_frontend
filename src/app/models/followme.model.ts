@@ -15,7 +15,7 @@ export class Followme {
         for (var x = 0; x < 5; x++ ){
             var fd:FollowmeData = new FollowmeData();
             fd.extension = '';
-            fd.tiempo = '';
+            fd.tiempo = '15';
             this.extlist[x] = fd;
         };
     }

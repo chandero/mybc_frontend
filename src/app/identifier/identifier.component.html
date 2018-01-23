@@ -10,7 +10,9 @@
 <!--      <span>usuario</span> -->
 <!--        <div class="mybc-login-input"> -->
           <mdl-textfield name="_identity" floating-label autofocus required [(ngModel)]="_identity" class="mdl-texfield mybc-login-input"  label="Usuario"
-                    type="text" (keyup.enter)="validateUser()"></mdl-textfield>
+                    type="text" (keyup.enter)="validateUser()" (keypress)="validateMsg()"></mdl-textfield>
+          <div *ngIf="!_uservalid"><span>{{ _usererror_label }}</span></div>
+          <div *ngIf="_err"><span>{{ _errormsg }}</span></div>
 <!--          <span style="color: white;" [ngClass]="{ 'hide': _uservalid }">{{ _usererror_label}}</span> -->
 <!--        </div> -->
       <p></p>

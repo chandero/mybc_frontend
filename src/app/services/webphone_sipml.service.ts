@@ -66,6 +66,11 @@ export class WebphoneSIPmlService {
     private _isVideoMute:boolean = false;
     private _isOnHold:boolean = false;
 
+    private _inCall:boolean = false;
+    private _ringing:boolean = false;
+    private _currentNumber:String= "";
+    private _currentCaller:String= "";
+
     constructor(windowRef: WindowRefService, private audioPlayer: AudioPlayerService){
 
         this._window = windowRef.nativeWindow;
@@ -283,6 +288,7 @@ export class WebphoneSIPmlService {
 
                         this.stopRingTone();
                         this.stopRingbackTone();
+                        this._ringing = false;
 
                         break;
                     }
@@ -359,6 +365,7 @@ export class WebphoneSIPmlService {
     private makeCall(e:string){
         this._session = this._sipStack.newSession('call-audio', this._oConfigCall);
         this.emitProgressEvent(e);
+        this._currentNumber = e;
         if (this._session.call(e) != 0) {
             this._session = null;
             this.emitEndedEvent();
@@ -492,6 +499,8 @@ export class WebphoneSIPmlService {
         console.log('Emit:-->Evento Terminated...');
         this.stopRingbackTone();
         this.stopRingTone();
+        this._ringing = false;
+        this._inCall = false;
         this.endedCall$.emit(e);
     }
 
@@ -543,6 +552,8 @@ export class WebphoneSIPmlService {
         console.log('Emit:-->Evento Answer...');
         this.stopRingTone();
         this.stopRingbackTone();
+        this._ringing = false;
+        this._inCall = true;
         this.answerCall$.emit(e);
     }
 
@@ -553,7 +564,8 @@ export class WebphoneSIPmlService {
 
     public emitEndedEvent() {
         console.log('Emit:-->Evento Ended...');
-        this.startRingbackTone();
+        this.stopRingbackTone();
+        this.stopRingTone();
         this._session = null;
         this.endedCall$.emit();
     }
@@ -582,13 +594,16 @@ export class WebphoneSIPmlService {
     public emitIncomingcallEvent(e:any){
         console.log('Emit:-->Evento Inconming...'+e);
         this.stopRingbackTone();
+        this.stopRingTone();
         this.startRingbackTone();
+        this._ringing = true;
         this.incomingCall$.emit(e);
     }
 
     public emitRingbackEvent(e:any){
         console.log('Emit:-->Evento Ringback...'+e.description);
         this.stopRingbackTone();
+        this.stopRingTone();
         this.startRingbackTone();
     }
 

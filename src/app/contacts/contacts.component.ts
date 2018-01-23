@@ -49,6 +49,8 @@ export class ContactsComponent implements OnInit, AfterViewInit {
 
   private _dialnumber: string = "";
   private _identifier: string = "Desconocido"; 
+
+  private _order:number = 0;
   //  
 
   constructor(private webphoneService: WebphoneSIPmlService, private router: Router, private contactService: ContactService, private googleUserService: GoogleUserService, private peopleResource: PeopleResource) { 
@@ -87,6 +89,25 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       c.cont_incall = false;
       this._contacts.push(c);
     } );
+  }
+
+  orderBy(){
+    this._order = 1 - this._order;
+    this._contacts.sort((a:Contact, b:Contact) => {
+      if (this._order === 0) {
+        if (a.cont_name < b.cont_name){
+          return 1;
+        } else if (a.cont_name > b.cont_name) {
+          return -1;
+        } else { return 0;}
+      } else {
+        if (a.cont_name < b.cont_name){
+          return -1;
+        } else if (a.cont_name > b.cont_name) {
+          return 1;
+        } else { return 0;}
+      }
+    });
   }
 
   setNumber(c: Contact){

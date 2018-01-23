@@ -11,6 +11,7 @@
                     (keyup)="dialerChange($event); false" (keyup.enter)="dial(); false" class="mdl-texfield" autofocus="true" label="Número"
                     type="text" floating-label pattern="-?[\+0-9*#]*([\+0-9*#]+)?" error-msg="La entrada no es un número a marcar válido!"></mdl-textfield>
                 <mdl-icon *ngIf="_ready" style="font-size:24px;color:rgb(255,255,255);cursor:pointer;" (click)="clear()">backspace</mdl-icon>
+                <!-- <mdl-icon class="mdl-icon" *ngIf="_ready" style="font-size:24px;color:rgb(255,255,255);cursor:pointer;" (click)="clipboardPaste()">content_paste</mdl-icon> -->
             </div>
             <div>
             <div *ngIf="_incall" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>

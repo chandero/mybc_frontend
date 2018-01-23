@@ -49,6 +49,7 @@ export class HeaderComponent {
   }
 
   private hangup() {
+    this.webphoneService.reject(this._callEvent);
     this.webphoneService.hangup();
     this._dialnumber = "";
   }

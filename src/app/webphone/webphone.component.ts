@@ -4,6 +4,7 @@ import { ClockComponent } from '../clock/clock.component';
 import { MdlDialogService, MdlSnackbarService, IOpenCloseRect, MdlDialogComponent } from '@angular-mdl/core';
 import { Observable } from 'rxjs/Observable';
 
+declare var Clipboard: any;
 
 @Component({
   selector: 'app-webphone',
@@ -11,6 +12,8 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./webphone.component.css'],
   entryComponents: [ClockComponent]
 })
+
+
 export class WebphoneComponent implements OnInit, AfterViewInit {
 
   private _startclock: boolean = false;
@@ -43,6 +46,8 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
   @ViewChild('_remoteVideo') _remoteVideoDialog: MdlDialogComponent;
   @ViewChild('numberToDial', { read: ElementRef }) _numberToDial: ElementRef;
 
+  private _clipboard:any;  
+
   constructor(private webphoneService: WebphoneSIPmlService, private dialogService: MdlDialogService, private snackbarService: MdlSnackbarService) {
     webphoneService.progressCall$.subscribe(e => this.progressHandler(e));
     webphoneService.confirmedCall$.subscribe(e => this.confirmedHandler(e));
@@ -59,6 +64,11 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this._numberToDial.nativeElement.focus();
+    this._clipboard = new Clipboard('.mdl-icon');
+  }
+
+  clipboardPaste() {
+    
   }
 
   @HostListener('document:keydown', ['$event'])

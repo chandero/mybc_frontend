@@ -15,7 +15,10 @@ export class PasswordComponent implements OnInit {
 
   private _userpassword: string;
   private _uservalid: boolean = true;
+  private _err: boolean = false;
   private _userlabel_error: string = 'Combinación usuario y contraseña invalida!';
+  private _errormsg: string ="Error al contactar con el servidor";
+
   private _username = localStorage.getItem('mybcuser');
 
   constructor(private _loginService: LoginService, private router: Router) { }
@@ -24,10 +27,17 @@ export class PasswordComponent implements OnInit {
   }
 
   validatePassword(){
+    this._err = false;
+    this._uservalid = true;
     if (this._userpassword === undefined){
       this._userpassword = 'none';
     }
-    this._loginService.validateSignIn(this._username, this._userpassword).subscribe(user => this.redirectToHome(user), err => { console.log(err)});
+    this._loginService.validateSignIn(this._username, this._userpassword).subscribe(user => this.redirectToHome(user), err => this.validateError(err));
+  }
+
+  validateError(err: any){
+    this._uservalid = false;
+    console.log("Error status"+ err);
   }
 
   redirectToHome(user: User){

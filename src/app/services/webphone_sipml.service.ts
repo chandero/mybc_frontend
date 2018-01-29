@@ -97,9 +97,9 @@ export class WebphoneSIPmlService {
             this._user = localStorage.getItem('mybcexten');
             this._secret = localStorage.getItem('mybcsecret');
         } else {
-            this._domain = 'mm.anw.cloud';
-            this._user = '500';
-            this._secret = '9d=7b$PX';
+            this._domain = 'mybc.anw.cloud';
+            this._user = '2022';
+            this._secret = '2Ci(C9-s';
         }
 
 	    SIPml.setDebugLevel('fatal');
@@ -117,11 +117,11 @@ export class WebphoneSIPmlService {
     }
 
     private createSipStack(){
-
-
-
         this._eventListener = e => {
-            console.log('Evento Listener: --> ' + e.type);
+            console.log('EventListener:-->call event **** **** = "' + e.type +'"');
+            console.log("EventListener:-->actual session = "+this._session);
+            console.log("EventListener:-->new session "+ e.newSession);
+            console.log("EventListener:-->session " + e.session);            
             switch (e.type) {
                     case 'failed_to_start': case 'failed_to_stop': case 'stopping': case 'stopped': {
 
@@ -158,12 +158,13 @@ export class WebphoneSIPmlService {
                             // Do not accept the incoming call if we're Already 'in call'
                             e.newSession.hangup(); // Comment this line for multi-line support
                         } else {
-
-                            this._session = e.newSession;
-                            // Display web page in the WHO is calling
-                            console.log('Evento: Incoming number: '+this._session.getRemoteFriendlyName());
-                            var sRemoteNumber = (this._session.getRemoteFriendlyName() || 'Desconocido');
-                            this.emitIncomingcallEvent(sRemoteNumber);
+                            if (e.newSession != undefined ) {
+                                this._session = e.newSession;
+                                // Display web page in the WHO is calling
+                                console.log('Evento: Incoming number: '+this._session.getRemoteFriendlyName());
+                                var sRemoteNumber = (this._session.getRemoteFriendlyName() || 'Desconocido');
+                                this.emitIncomingcallEvent(sRemoteNumber);
+                            }
                         }
                         break;
                    }
@@ -241,7 +242,7 @@ export class WebphoneSIPmlService {
                     // In the browser Display teh call is finished
                     case 'terminated':
                     case 'terminating': {
-
+                        console.log('Call Canceled');
                         this._session = null;
                         this.emitTerminateEvent(e);
                         break;
@@ -386,6 +387,7 @@ export class WebphoneSIPmlService {
     }
 
     private rejectCall(e:any){
+        console.log('Service: rechazando llamada...'+JSON.stringify(e))
         this._session.reject();
     }
 
@@ -411,6 +413,8 @@ export class WebphoneSIPmlService {
     }
 
     public hangup(){
+        this.stopRingTone();
+        this.stopRingbackTone();
         this._session.hangup({events_listener: {events: '*' , listener: this._callListener}});
     }
 
@@ -602,9 +606,11 @@ export class WebphoneSIPmlService {
 
     public emitRingbackEvent(e:any){
         console.log('Emit:-->Evento Ringback...'+e.description);
-        this.stopRingbackTone();
-        this.stopRingTone();
-        this.startRingbackTone();
+        if (this._currentNumber === ''){
+            this.stopRingbackTone();
+            this.stopRingTone();
+            this.startRingbackTone();
+        }
     }
 
     public emitRegisterEvent(e:any){

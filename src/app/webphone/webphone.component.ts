@@ -23,6 +23,7 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
   private _ringing: boolean = false;
   private _incall: boolean = false;
   private _inprogress: boolean = false;
+  private _incoming: boolean = false;  
   private _isHold: boolean = false;
   private _isMuted: boolean = false;
   private _isRemoteVideo: boolean = false;
@@ -193,7 +194,8 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
   }
 
   private reject() {
-    this.webphoneService.reject(this._callEvent);
+    this.webphoneService.hangup();    
+  //  this.webphoneService.reject(this._callEvent);
     this._dialnumber = "";
     this.validateDialnumber();
   }
@@ -245,6 +247,7 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
     this._ringing = false;
     this._incall = true;
     this._inprogress = false;
+    this._incoming = false;
     this._startclock = true;
 
   }
@@ -324,7 +327,7 @@ export class WebphoneComponent implements OnInit, AfterViewInit {
     this._incall = false;
     this._ringing = true;
     this._inprogress = false;
-
+    this._incoming = true;
     this._startclock = false;
     this._callEvent = e;
   }

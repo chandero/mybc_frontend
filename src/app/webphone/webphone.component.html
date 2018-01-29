@@ -16,8 +16,10 @@
             <div>
             <div *ngIf="_incall" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>
             <div *ngIf="_inprogress" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>
+            <div *ngIf="_incoming" style="font-size:32px;padding: 10px;">{{ _identifier }}</div>
             <div *ngIf="_incall" style="font-size:24px;padding: 10px;">{{ _dialnumber }}</div>
             <div *ngIf="_inprogress" style="font-size:24px;padding: 10px;">{{ _dialnumber }}</div>
+            <div *ngIf="_incoming" style="font-size:24px;padding: 10px;">{{ _dialnumber }}</div>            
             </div>
             <div>
                 <app-clock style="color:#fff;" *ngIf="_incall || _inprogress" [enabled]="_startclock"></app-clock>
